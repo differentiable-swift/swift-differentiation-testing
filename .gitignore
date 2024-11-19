@@ -12,3 +12,14 @@ RuntimeCrashTests/**
 
 ### Above combination will ignore all files without extension in the folders CompiletimeCrashTests and RuntimeCrashTests ###
 ### This is to avoid adding build products from single file reproducers to git ###
+
+
+### Basic spm gitignore
+.DS_Store
+.build
+xcuserdata/
+DerivedData/
+**/.swiftpm/configuration/registries.json
+**/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+.vscode
