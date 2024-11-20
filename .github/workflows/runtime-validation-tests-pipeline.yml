@@ -1,11 +1,11 @@
 
 name: Runtime Validation Tests Pipeline
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
-    name: Swift ${{ matrix.swift }}
+    name: Swift ${{ matrix.swift }} Linux
     strategy:
       matrix:
         swift: ["6.0", "6.0.1", "6.0.2"]
