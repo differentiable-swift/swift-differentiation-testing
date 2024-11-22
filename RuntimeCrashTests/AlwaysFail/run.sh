@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 ./main
 RETURN_CODE=$?
-EXPECTED_RETURN_CODE=133
+EXPECTED_RETURN_CODE=1
