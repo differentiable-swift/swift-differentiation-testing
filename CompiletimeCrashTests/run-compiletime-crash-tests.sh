@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "Running Compiletime Crash tests\n"
 
 for folder in $(find . -type d -mindepth 1); do
@@ -31,7 +32,7 @@ for folder in $(find . -type d -mindepth 1); do
             exit 1
         else
             # script failed with unexpected error code
-            echo "$folder failed with unexpected error code: $RETURN_CODE instead of: $EXPECTED_RETURN_CODE"
+            echo "$folder failed with unexpected error code: $RETURN_CODE, expected: $EXPECTED_RETURN_CODE"
             exit 1
         fi
     fi
