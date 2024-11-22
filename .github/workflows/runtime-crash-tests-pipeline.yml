@@ -4,29 +4,13 @@ name: Runtime Crash Tests Pipeline
 on: [pull_request]
 
 jobs:
-  list-tests:
-    name: list tests
-    runs-on: ubuntu-latest
-    outputs:
-      file: ${{ steps.list_tests.outputs.test_list }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: list_tests
-        name: List tests
-        run: echo "test_list=$(ls RuntimeCrashTests/ | jq -R -s -c 'split("\n")[:-1]')" >> "$GITHUB_OUTPUT"
   build:
-    name: Build ${{ matrix.test-list }} for Swift ${{ matrix.swift }}
-    needs: [list-tests]
+    name: RuntimeCrash Tests Swift ${{ matrix.swift }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         swift: ["6.0", "6.0.1", "6.0.2"]
-        test-list: ${{ fromJson(needs.list-tests.outputs.file) }}
     container: swift:${{ matrix.swift }}
     steps:
       - uses: actions/checkout@v4
-      # We should loop over all folders, identify what kind of test it is spm package vs single .swift file
-      - name: Build ${{ matrix.test-list }}
-        run: swiftc RuntimeCrashTests/${{ matrix.test-list }}/main.swift -o RuntimeCrashTests/${{ matrix.test-list }}/main
-      - name: Run ${{ matrix.test-list }}
-        run: RuntimeCrashTests/${{ matrix.test-list }}/main
+      - run: (cd RuntimeCrashTests && ./run-runtime-crash-tests.sh)
