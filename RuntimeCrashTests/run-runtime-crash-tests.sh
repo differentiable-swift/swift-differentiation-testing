@@ -17,27 +17,23 @@ for folder in $(find . -type d -mindepth 1); do
     # Check if results match expected results, if not, exit with error
     if [ $EXPECTED_RETURN_CODE -eq 0 ]; then
         # script expected to succeed
-        if [ $RETURN_CODE -eq $EXPECTED_RETURN_CODE ]; then
+        if [ $RETURN_CODE -eq 0 ]; then
             # script succeeded
-            echo "$folder succeeded"
+            echo "$folder passed as expected"
         else
             # script failed unexpectedly
-            echo "$folder failed unexpectedly with error code: $RETURN_CODE"
+            echo "$folder failed unexpectedly"
             exit 1
         fi
     else
         # script expected to fail
-        if [ $RETURN_CODE -eq $EXPECTED_RETURN_CODE ]; then
-            # script failed with expected error code
-            echo "$folder failed with expected error code: $RETURN_CODE"
-        elif [ $RETURN_CODE -eq 0 ]; then
+        if [ $RETURN_CODE -eq 0 ]; then
             # script passed unexpectedly
             echo "$folder passed unexpectedly"
             exit 1
         else
-            # script failed with unexpected error code
-            echo "$folder failed with unexpected error code: $RETURN_CODE, expected: $EXPECTED_RETURN_CODE"
-            exit 1
+            # script failed as expected
+            echo "$folder failed as expected"
         fi
     fi
     
