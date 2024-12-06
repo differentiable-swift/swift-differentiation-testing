@@ -1,0 +1,24 @@
+{
+  "originHash" : "ba4dc220576f5dcc5f2945f7efca69aa8bf73de2246b6b1a0652fc24de27b08c",
+  "pins" : [
+    {
+      "identity" : "swift-gen",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-gen.git",
+      "state" : {
+        "revision" : "5bd20fb662e1ead7ee47df6bb0a15398295f2e06",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "swift-numerics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-numerics.git",
+      "state" : {
+        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
+        "version" : "1.0.2"
+      }
+    }
+  ],
+  "version" : 3
+}
