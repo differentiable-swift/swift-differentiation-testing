@@ -6,7 +6,7 @@ enum Resources {
     var url: URL {
         switch self {
             case .swiftLogo: return Bundle.module
-            .url(forResource: "target", withExtension: "png")! // swiftlint:disable:this force_unwrapping
+            .url(forResource: "target", withExtension: "png")!
         }
     }
 }

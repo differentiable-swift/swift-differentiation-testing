@@ -17,6 +17,5 @@ let benchmarks: @Sendable () -> Void = {
         benchmark.stopMeasurement()
         
         blackHole(optimizedInitialConditions)
-        
     }
 }

@@ -38,6 +38,48 @@ struct Solution: Differentiable {
         self.previousWaterLevel = waterLevel
         self.time = time
     }
+    
+    @differentiable(reverse)
+    func evolve() -> Self {
+        var newWaterLevel = currentWaterLevel
+
+        for x in 1 ..< resolution - 1 {
+            for y in 1 ..< resolution - 1 {
+                // FIXME: Should be u2[x][y] = ...
+                let newValue: Float = 2 * currentWaterLevel[x, y] + (c * c * dt * dt + c * a * dt) * currentWaterLevel.laplace(x, y) * Float(resolution * resolution) - previousWaterLevel[x, y] - c * a * dt * previousWaterLevel.laplace(x, y) * Float(resolution * resolution)
+                newWaterLevel[x, y] = newValue
+            }
+        }
+
+        return Self(currentWaterLevel: newWaterLevel, previousWaterLevel: currentWaterLevel, time: time + dt)
+    }
+    
+    static func optimization(
+        target: Array2DStorage<Float>,
+        resolution: Int,
+        duration: Int,
+        iterations: Int
+    ) -> Array2DStorage<Float> {
+        var initialWaterLevel = Array2DStorage<Float>(repeating: 0, width: resolution, height: resolution)
+
+        for opt in 1 ... iterations {
+            var (loss, deltaInitialWaterLevel) = valueWithGradient(at: initialWaterLevel) {
+                initialWaterLevel -> Float in
+                let initialSolution = Solution(waterLevel: initialWaterLevel)
+                // TODO: we can save memory here by not keeping all the in between solutions
+                let evolution = [Solution](evolve: initialSolution, for: duration)
+
+                let last = withoutDerivative(at: evolution.count - 1)
+                let lastEvo = evolution[last].currentWaterLevel
+                let loss = lastEvo.meanSquaredError(to: target)
+                return loss
+            }
+            deltaInitialWaterLevel.scale(by: -2)
+            initialWaterLevel.move(by: deltaInitialWaterLevel)
+        }
+
+        return initialWaterLevel
+    }
 }
 
 extension Array where Element == Solution {
@@ -59,3 +101,4 @@ extension Array where Element == Solution {
         self.append(currentSolution)
     }
 }
+
