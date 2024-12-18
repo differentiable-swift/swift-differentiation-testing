@@ -1,10 +1,32 @@
+import _Differentiation
 import Foundation
 import PNG
 
 extension Array2DStorage where Element == Float {
+    /// Applies discretized Laplace operator to scalar field `u` at grid points `x` and `y`.
+    @differentiable(reverse)
+    @inlinable
+    func laplace(_ x: Int, _ y: Int) -> Float {
+        self[x, y + 1] + self[x - 1, y] - (4 * self[x, y]) + self[x + 1, y] + self[x, y - 1]
+    }
+
+    /// Calculates mean squared error loss between the solution and a `target` grayscale image.
+    @differentiable(reverse, wrt: self)
+    func meanSquaredError(to target: Array2DStorage<Float>) -> Float {
+        var mse: Float = 0.0
+
+        for x in 0 ..< withoutDerivative(at: width) {
+            for y in 0 ..< withoutDerivative(at: height) {
+                let error = target[x, y] - self[x, y]
+                mse += error * error
+            }
+        }
+        return mse / Float(width) / Float(height)
+    }
+
     @inlinable
     static func loadTarget(target: URL, resolution: Int) -> Self {
-        let targetImage = try! PNG.Image.decompress(path: target.path)! // swiftlint:disable:this force_try force_unwrapping
+        let targetImage = try! PNG.Image.decompress(path: target.path)!
         let pixels = targetImage.unpack(as: PNG.RGBA<UInt8>.self).map { Float($0.r) }
         let storage = Array2DStorage(width: targetImage.size.x, height: targetImage.size.y, values: pixels)
         let target = storage.bilinearResizeTo(width: resolution, height: resolution).map { ($0 - Float(UInt8.max) / 2) / Float(UInt8.max) }
@@ -67,4 +89,3 @@ extension Array2DStorage where Element == Float {
         return new
     }
 }
-

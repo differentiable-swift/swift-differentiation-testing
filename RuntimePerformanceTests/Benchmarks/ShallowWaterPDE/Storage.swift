@@ -76,7 +76,7 @@ extension Array2DStorage: AdditiveArithmetic where Element: AdditiveArithmetic {
         if rhs.values.count == 0 {
             return lhs
         }
-        precondition( // swiftlint:disable:this no_precondition
+        precondition(
             lhs.width == rhs.width && lhs.height == rhs.height,
             "Shape mismatch: (\(lhs.width), \(lhs.height)) and (\(rhs.width), \(rhs.height))"
         )
@@ -123,7 +123,7 @@ extension Array2DStorage: Differentiable where Element: Differentiable {
         let width = self.width
         let height = self.height
         let count = self.values.count
-        precondition(width * height == count, "invalid array2d (values mismatch widht * height)")
+        precondition(width * height == count, "invalid array2d (values mismatch width * height)")
         
         return (
             value: (),
