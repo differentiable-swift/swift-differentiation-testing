@@ -14,6 +14,16 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
+            name: "LanguageCoverage",
+            dependencies: [
+                .product(name: "Benchmark", package: "package-benchmark"),
+            ],
+            path: "Benchmarks/LanguageCoverage",
+            plugins: [
+                .plugin(name: "BenchmarkPlugin", package: "package-benchmark"),
+            ]
+        ),
+        .executableTarget(
             name: "ShallowWaterPDE",
             dependencies: [
                 .product(name: "Benchmark", package: "package-benchmark"),
