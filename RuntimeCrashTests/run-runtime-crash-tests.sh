@@ -3,7 +3,7 @@ echo -e "Running Runtime Crash tests\n"
 
 cd Passing
 echo -e "Running Passing Runtime Crash tests\n"
-for folder in $(find . -type d -depth 1); do
+for folder in $(find . -type d -mindepth 1 -maxdepth 1); do
     cd "$folder" # navigate to current testing folder
     
     echo "Building $folder"
@@ -29,7 +29,7 @@ done
     
 cd ../Failing
 echo -e "Running Failing Runtime Crash tests\n"
-for folder in $(find . -type d -depth 1); do
+for folder in $(find . -type d -mindepth 1 -maxdepth 1); do
     cd "$folder" # navigate to current testing folder
     
     echo "Building $folder"
