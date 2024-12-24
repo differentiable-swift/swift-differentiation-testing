@@ -3,7 +3,7 @@ echo -e "Running Compiletime Crash tests\n"
 
 cd Passing
 echo -e "Running Passing Compiletime Crash tests\n"
-for folder in $(find . -type d -depth 1); do
+for folder in $(find . -type d -mindepth 1 -maxdepth 1); do
     cd "$folder" # navigate to current testing folder
     echo "Building $folder"
     source ./build.sh # is expected to set RETURN_CODE variable
@@ -23,7 +23,7 @@ done
 
 cd ../Failing
 echo -e "Running Failing Compiletime Crash tests\n"
-for folder in $(find . -type d -depth 1); do
+for folder in $(find . -type d -mindepth 1 -maxdepth 1); do
     cd "$folder" # navigate to current testing folder
     echo "Building $folder"export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
     source ./build.sh # is expected to set RETURN_CODE variable
