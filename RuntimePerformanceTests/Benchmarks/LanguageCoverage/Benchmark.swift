@@ -8,9 +8,7 @@ enum CustomMeasurement {
     static let ratio = BenchmarkMetric.custom("ratio", polarity: .prefersSmaller, useScalingFactor: true)
 }
 
-extension BenchmarkMetric: @unchecked @retroactive Sendable {
-    
-}
+extension BenchmarkMetric: @unchecked @retroactive Sendable {}
 
 extension Benchmark {
     @discardableResult
