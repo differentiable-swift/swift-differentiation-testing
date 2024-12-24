@@ -1,0 +1,42 @@
+
+name: tests
+
+on: [pull_request]
+
+jobs:
+  compiletime-crash-tests:
+    name: Compiletime Crash Tests Swift ${{ matrix.swift }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        swift: ["6.0.3"]
+    container: swift:${{ matrix.swift }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: (cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh)
+
+  runtime-crash-tests:
+    name: Runtime Crash Tests Swift ${{ matrix.swift }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        swift: ["6.0.3"]
+    container: swift:${{ matrix.swift }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: (cd RuntimeCrashTests && ./run-runtime-crash-tests.sh)
+
+  runtime-validation-tests:
+    name: Runtime Validation Tests Swift ${{ matrix.swift }}
+    strategy:
+      matrix:
+        swift: ["6.0.3"]
+    runs-on: ubuntu-latest
+    container: swift:${{ matrix.swift }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build RuntimeValidationTests
+        run: swift build --package-path RuntimeValidationTests
+      - name: Test RuntimeValidationTests
+        run: swift test --package-path RuntimeValidationTests
+
