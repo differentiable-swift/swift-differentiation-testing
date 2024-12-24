@@ -93,7 +93,6 @@ func fuzzedMath2(_ x0: Float, _ x1: Float, _ x2: Float) -> Float {
     return y;
 }
 
-
 // Functions generated via a fuzzer incorporating a ternary operator.
 
 @differentiable(reverse)
