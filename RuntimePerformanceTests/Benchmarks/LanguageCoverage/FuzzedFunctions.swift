@@ -45,6 +45,7 @@ func fuzzedMath1(_ x0: Float, _ x1: Float, _ x2: Float) -> Float {
     y += t;
     return y;
 }
+
 @differentiable(reverse)
 func fuzzedMath2(_ x0: Float, _ x1: Float, _ x2: Float) -> Float {
     var y = x0;
