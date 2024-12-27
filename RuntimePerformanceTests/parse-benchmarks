@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+import csv
+import os
+import json
+
+gh_action_formatted = []
+for file in os.listdir("./benchmark-raw-output"):
+    with open(f"./benchmark-raw-output/{file}") as bench_result:
+        # filename format: Current_run.LanguageCoverage.sixteen_composed_operations_looped.ratio.histogram.percentiles.tsv
+        name_components = file.split(".") 
+        name = f"{name_components[1]} - {name_components[2]} - {name_components[3]}"
+        for line in csv.reader(bench_result, delimiter="\t"):
+            if line[0] == "Percentile":
+                unit = line[1].strip()
+
+            # just take the 50th percentile for now
+            if line[0] == "50":
+                gh_action_formatted.append({"name": name, "unit": unit, "value": line[1]})
+
+res = json.dumps(gh_action_formatted)
+with open("bench-mean-results.json", "w") as f:
+    f.write(res)
