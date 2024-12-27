@@ -43,7 +43,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                let thing = gradient(at: 2, of: oneOperation)
+                let thing = gradient(at: 2, of: { v in oneOperation(a: v) })
                 blackHole(thing)
             }
         }
@@ -57,7 +57,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: sixteenOperations))
+                blackHole(gradient(at: 2, of: { v in sixteenOperations(a: v) }))
             }
         }
     )
@@ -70,7 +70,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: twoComposedOperations))
+                blackHole(gradient(at: 2, of: { v in twoComposedOperations(a: v) }))
             }
         }
     )
@@ -83,7 +83,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: sixteenComposedOperations))
+                blackHole(gradient(at: 2, of: { v in sixteenComposedOperations(a: v) }))
             }
         }
     )
@@ -99,7 +99,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: oneOperationLoopedSmall))
+                blackHole(gradient(at: 2, of: { v in oneOperationLoopedSmall(a: v) }))
             }
         }
     )
@@ -112,7 +112,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: fourOperationsLoopedSmall))
+                blackHole(gradient(at: 2, of: { v in fourOperationsLoopedSmall(a: v) }))
             }
         }
     )
@@ -125,7 +125,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: sixteenOperationsLoopedSmall))
+                blackHole(gradient(at: 2, of: { v in sixteenOperationsLoopedSmall(a: v) }))
             }
         }
     )
@@ -138,7 +138,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: oneOperationLooped))
+                blackHole(gradient(at: 2, of: { v in oneOperationLooped(a: v) }))
             }
         }
     )
@@ -151,7 +151,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: twoOperationsLooped))
+                blackHole(gradient(at: 2, of: { v in twoOperationsLooped(a: v) }))
             }
         }
     )
@@ -164,7 +164,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: fourOperationsLooped))
+                blackHole(gradient(at: 2, of: { v in fourOperationsLooped(a: v) }))
             }
         }
     )
@@ -177,7 +177,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: eightOperationsLooped))
+                blackHole(gradient(at: 2, of: { v in eightOperationsLooped(a: v) }))
             }
         }
     )
@@ -190,7 +190,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: sixteenOperationsLooped))
+                blackHole(gradient(at: 2, of: { v in sixteenOperationsLooped(a: v) }))
             }
         }
     )
@@ -203,7 +203,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: twoComposedOperationsLooped))
+                blackHole(gradient(at: 2, of: { v in twoComposedOperationsLooped(a: v) }))
             }
         }
     )
@@ -216,7 +216,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: sixteenComposedOperationsLooped))
+                blackHole(gradient(at: 2, of: { v in sixteenComposedOperationsLooped(a: v) }))
             }
         }
     )
@@ -232,7 +232,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: fuzzedMath1))
+                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMath1(x, y, z) }))
             }
         }
     )
@@ -245,7 +245,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: fuzzedMath2))
+                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMath2(x, y, z) }))
             }
         }
     )
@@ -259,7 +259,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: fuzzedMathTernary1))
+                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMathTernary1(x, y, z) }))
             }
         }
     )
@@ -272,7 +272,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: fuzzedMathTernary2))
+                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMathTernary2(x, y, z) }))
             }
         }
     )
