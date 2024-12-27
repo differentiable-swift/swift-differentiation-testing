@@ -1,0 +1,41 @@
+name: Differentiation Benchmarks
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  deployments: write
+
+jobs:
+  benchmark:
+    name: Run Differentiation benchmarks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        swift: ["6.0.3"]
+    container: swift:${{ matrix.swift }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: apt-get -q update && apt-get install -y libjemalloc-dev python3
+      - name: Run benchmarks
+        run: cd RuntimePerformanceTests && swift package --allow-writing-to-package-directory benchmark --format histogramPercentiles --path benchmark-raw-output
+      - name: Process benchmarks
+        run: cd RuntimePerformanceTests && ./parse-benchmarks
+
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: package-benchmark
+          tool: 'customBiggerIsBetter'
+          output-file-path: RuntimePerformanceTests/bench-mean-results.json
+          benchmark-data-dir-path: "RuntimePerformanceTests/results"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+          # Show alert with commit comment on detecting possible performance regression
+          alert-threshold: '200%'
+          comment-on-alert: true
+          fail-on-alert: true
+          summary-always: true
+          alert-comment-cc-users: '@JaapWijnen'
