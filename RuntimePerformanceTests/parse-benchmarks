@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+# This script is a quick-and-dirty parser for the `histogramPercentiles` outupt of package-benchmark: https://swiftpackageindex.com/ordo-one/package-benchmark/1.27.4/documentation/benchmark/exportingbenchmarks#Saved-Formats
+# that converts it into the `customBiggerIsBetter` json format needed by `github-action-benchmark`: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#examples
+# 
+# package-benchmark does support `jmh` output, but **only** for benchmarks with a throughput metric, which ours are not using (as it's not a
+# valuable metric in this case). Instead, this script just takes the 50th percentile result for each benchmark and passes that to the
+# benchmark action.
+
 import csv
 import os
 import json
