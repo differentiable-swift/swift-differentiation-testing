@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+# This script is a quick-and-dirty parser for the `histogramPercentiles` outupt of package-benchmark: https://swiftpackageindex.com/ordo-one/package-benchmark/1.27.4/documentation/benchmark/exportingbenchmarks#Saved-Formats
+# that converts it into the `customBiggerIsBetter` json format needed by `github-action-benchmark`: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#examples
+# 
+# package-benchmark does support `jmh` output, but **only** for benchmarks with a throughput metric, which ours are not using (as it's not a
+# valuable metric in this case). Instead, this script just takes the 50th percentile result for each benchmark and passes that to the
+# benchmark action.
+
+import csv
+import os
+import json
+
+gh_action_formatted = []
+for file in os.listdir("./benchmark-raw-output"):
+    with open(f"./benchmark-raw-output/{file}") as bench_result:
+        # filename format: Current_run.LanguageCoverage.sixteen_composed_operations_looped.ratio.histogram.percentiles.tsv
+        name_components = file.split(".") 
+        name = f"{name_components[1]} - {name_components[2]} - {name_components[3]}"
+        for line in csv.reader(bench_result, delimiter="\t"):
+            if line[0] == "Percentile":
+                unit = line[1].strip()
+
+            # just take the 50th percentile for now
+            if line[0] == "50":
+                gh_action_formatted.append({"name": name, "unit": unit, "value": line[1]})
+
+res = json.dumps(gh_action_formatted)
+with open("bench-mean-results.json", "w") as f:
+    f.write(res)
