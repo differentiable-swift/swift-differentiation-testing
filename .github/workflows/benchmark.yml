@@ -23,7 +23,7 @@ jobs:
         run: cd RuntimePerformanceTests && swift package --allow-writing-to-package-directory benchmark --format histogramPercentiles --path benchmark-raw-output
       - name: Process benchmarks
         run: cd RuntimePerformanceTests && ./parse-benchmarks
-
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
