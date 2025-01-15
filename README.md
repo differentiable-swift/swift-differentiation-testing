@@ -2,13 +2,12 @@
 This repository serves as a test suite of crashes and other broken behaviour related to the [Differentiable Swift](https://github.com/differentiable-swift#meet-differentiable-swift) language feature. It aims to provide a low bar for Differentiable Swift users to provide reproducers to crashes or incorrect behaviour. 
 Tests that reproduce currently broken behaviour are added as expecting to fail and once fixed in future toolchain releases will be marked as fixed and used to run as a test suite. 
 The tests are currently divided into 4 different categories: 
-- Compiletime crash tests, checks for unexpected while compiling code.
+- Compiletime crash tests, checks for unexpected crashes while compiling code.
 - Runtime crash tests, checks for unexpected crashes while running code.
 - Runtime validation tests, checks for incorrect results while running code.
 - Runtime performance tests, checks for changes in performance as implementations evolve.
 
-The ultimate goal of this repository is for the library portion to no longer exist since all implementations are either upstreamed to [Swift](https://github.com/swiftlang/swift) or the provided workarounds are no longer needed since there's more direct language support making them obsolete. 
-We would ultimately like this repository to become a collection of Examples and documentation on the language feature so that people can more easily get started using Differentiable Swift! 
+New tests can be added as either failing or passing. Failing tests, once fixed will be moved to passing to act as a testsuite to prevent unforeseen changes. 
 
 ## Overview
 Currently this repository provides the following:
