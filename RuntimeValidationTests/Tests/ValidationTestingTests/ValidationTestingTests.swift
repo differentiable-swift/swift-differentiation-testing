@@ -91,6 +91,23 @@ func altAddingThree(_ x: Double, _ y: Double, _ z: Double, _ w: Double) -> Doubl
     return output
 }
 
+// =========================================================================================================
+// https://github.com/swiftlang/swift/blob/main/test/AutoDiff/stdlib/collection_higher_order_functions.swift
+// =========================================================================================================
+
+// Test differentiable collection higher order functions:
+// `differentiableMap(_:)` and `differentiableReduce(_:_:)`.
+
+let array: [Float] = [1, 2, 3, 4, 5]
+
+func double(_ array: [Float]) -> [Float] {
+    array.differentiableMap { $0 * $0 }
+}
+
+func product(_ array: [Float]) -> Float {
+    array.differentiableReduce(1) { $0 * $1 }
+}
+
 @Suite
 struct ValidationTestingTests {
     @Test(arguments: [1.0])
@@ -134,5 +151,17 @@ struct ValidationTestingTests {
             #expect((2, 3, 4) == gradient(at: 2, 3, 4, of: { 10.addingThree($0, $1, $2) }))
             #expect((2, 3, 4) == gradient(at: 2, 3, 4, of: { altAddingThree(10, $0, $1, $2) }))
         }
+    }
+
+    @Test
+    func testHigherOrderFunctions() {
+        #expect([] == pullback(at: array, of: { double($0) })([]))
+        #expect([0] == pullback(at: array, of: { double($0) })([0]))
+        #expect([2] == pullback(at: array, of: { double($0) })([1]))
+        #expect([2, 4, 6, 8, 10] == pullback(at: array, of: { double($0) })([1, 1, 1, 1, 1]))
+
+        #expect([1] == gradient(at: [0], of: { product($0) }))
+        #expect([1] == gradient(at: [1], of: { product($0) }))
+        #expect([120, 60, 40, 30, 24] == gradient(at: array, of: { product($0) }))
     }
 }
