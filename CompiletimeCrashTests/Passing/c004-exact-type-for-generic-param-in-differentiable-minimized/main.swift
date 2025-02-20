@@ -1,4 +1,5 @@
 // https://github.com/swiftlang/swift/issues/57946#issuecomment-1120439311
+// Ostensibly minimized reproducer for the original one.
 
 import _Differentiation
 

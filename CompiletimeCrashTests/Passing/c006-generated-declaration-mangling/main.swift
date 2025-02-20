@@ -1,3 +1,6 @@
+// https://github.com/swiftlang/swift/commit/e87a583cfd9ca585574a461a8bea731ce12452d3
+// Disabled flaky test. Occasionally fails to link
+
 import _Differentiation
 
 extension Float {

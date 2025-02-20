@@ -1,4 +1,5 @@
 // https://github.com/swiftlang/swift/pull/65249
+// Flaky: linker sometimes crashes on Linux
 
 import _Differentiation
 

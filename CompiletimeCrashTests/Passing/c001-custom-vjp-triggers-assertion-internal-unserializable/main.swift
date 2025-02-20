@@ -1,3 +1,6 @@
+// https://github.com/swiftlang/swift/issues/58246
+// Regression: Custom VJP causes assertion failure: internal/private function cannot be serialized
+
 import _Differentiation
 
 extension SIMD
