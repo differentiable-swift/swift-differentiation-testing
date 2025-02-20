@@ -1,6 +1,7 @@
 import _Differentiation
 
 // https://github.com/swiftlang/swift/issues/54819
+// Regression due to rewrite of curry thunks.
 
 // TF-688: Test generic curry thunk cloning.
 public struct TF_688_Struct<Scalar> {

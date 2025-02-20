@@ -1,6 +1,7 @@
 import _Differentiation
 
 // https://github.com/swiftlang/swift/issues/60461
+// Regression: synthesized `TangentVectors` for `Differentiable` types can no longer be extended.
 
 protocol TestProtocol {}
 

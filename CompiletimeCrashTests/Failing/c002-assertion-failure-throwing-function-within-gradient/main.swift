@@ -1,6 +1,7 @@
 import _Differentiation
 
 // https://github.com/swiftlang/swift/issues/57523
+// Need to add a new diagnostic in order to avoid crash when a throwing function is used within `gradient`.
 
 enum E: Error {
     case error

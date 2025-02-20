@@ -2,6 +2,7 @@ import _Differentiation
 
 // https://github.com/swiftlang/swift/issues/75280
 // https://github.com/swiftlang/swift/issues/79051
+// guard let optional unwrapping not differentiable
 // Used to crash, compilation fails now: not differentiable
 
 @differentiable(reverse) func a<F, A>(_ f: F?, c: @differentiable(reverse) (F) -> A) -> A?

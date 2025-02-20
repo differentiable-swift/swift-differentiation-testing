@@ -1,6 +1,7 @@
 import _Differentiation
 
 // https://github.com/swiftlang/swift/issues/55882
+// Compiler crashes for custom derivative of nil-coalescing operator.
 
 @derivative(of: ??)
 @usableFromInline
