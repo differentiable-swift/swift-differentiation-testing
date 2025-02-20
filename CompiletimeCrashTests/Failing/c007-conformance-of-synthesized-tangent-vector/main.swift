@@ -1,4 +1,5 @@
 // https://github.com/swiftlang/swift/issues/54898
+// `TangentVector` cannot be extended and hence protocol conformance cannot be specified for them.
 
 import _Differentiation
 
@@ -14,10 +15,12 @@ public struct S: Differentiable {
     //public func move(along direction: TangentVector) { fatalError() }
 }
 
+// Tangent vector cannot be extended...
 extension S.TangentVector: P {}
 
 func f<T: Differentiable>(_ t: T) where T.TangentVector: P {}
 
+// ... and hence does not conform to this type
 f(S())
 
 /*

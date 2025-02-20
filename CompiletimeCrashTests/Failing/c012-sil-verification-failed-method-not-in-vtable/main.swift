@@ -1,4 +1,5 @@
 // https://github.com/swiftlang/swift/issues/54721
+// SILGen failure for derived class with differentiable method
 
 import _Differentiation
 
