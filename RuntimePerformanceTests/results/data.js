@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1737026307384,
+  "lastUpdate": 1740053682069,
   "repoUrl": "https://github.com/differentiable-swift/swift-differentiation-testing",
   "entries": {
     "package-benchmark": [
@@ -912,6 +912,310 @@ window.BENCHMARK_DATA = {
             "name": "LanguageCoverage - one_operation_looped - run_reverse_(ns)",
             "value": "8643",
             "unit": "run reverse (ns) (K)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "JaapWijnen@users.noreply.github.com",
+            "name": "Jaap Wijnen",
+            "username": "JaapWijnen"
+          },
+          "committer": {
+            "email": "JaapWijnen@users.noreply.github.com",
+            "name": "Jaap Wijnen",
+            "username": "JaapWijnen"
+          },
+          "distinct": true,
+          "id": "e07b9e1867c68729613ca99ed0275c5795562cde",
+          "message": "Update main.swift",
+          "timestamp": "2025-02-20T13:11:00+01:00",
+          "tree_id": "d1ab9a81c08adbae651e517e79554827ea6e83ba",
+          "url": "https://github.com/differentiable-swift/swift-differentiation-testing/commit/e07b9e1867c68729613ca99ed0275c5795562cde"
+        },
+        "date": 1740053681822,
+        "tool": "customBiggerIsBetter",
+        "benches": [
+          {
+            "name": "LanguageCoverage - eight_operations_looped - run_reverse_(ns)",
+            "value": "67",
+            "unit": "run reverse (ns) (M)"
+          },
+          {
+            "name": "LanguageCoverage - one_operation_looped - run_forward_(ns)",
+            "value": "44",
+            "unit": "run forward (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_2 - ratio",
+            "value": "40",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_composed_operations_looped - run_reverse_(ns)",
+            "value": "221",
+            "unit": "run reverse (ns) (M)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_composed_operations_looped - ratio",
+            "value": "119",
+            "unit": "ratio (K)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_2 - run_reverse_(ns)",
+            "value": "2554",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - one_operation - run_reverse_(ns)",
+            "value": "179",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - four_operations_looped - run_forward_(ns)",
+            "value": "1963",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - four_operations_looped_(small) - run_reverse_(ns)",
+            "value": "2806",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_with_ternary_operators_2 - ratio",
+            "value": "54",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations_looped_(small) - ratio",
+            "value": "6423",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations_looped - run_reverse_(ns)",
+            "value": "141",
+            "unit": "run reverse (ns) (M)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations_looped_(small) - run_forward_(ns)",
+            "value": "1583",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - one_operation_looped_(small) - run_reverse_(ns)",
+            "value": "916",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_composed_operations_looped - run_forward_(ns)",
+            "value": "1854",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_with_ternary_operators_1 - ratio",
+            "value": "43",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - one_operation - run_forward_(ns)",
+            "value": "1573",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - two_operations_looped - run_forward_(ns)",
+            "value": "291",
+            "unit": "run forward (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations - ratio",
+            "value": "779",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_1 - run_reverse_(ns)",
+            "value": "1788",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_composed_operations - ratio",
+            "value": "1022",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_with_ternary_operators_2 - run_forward_(ns)",
+            "value": "28",
+            "unit": "run forward (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - two_operations_looped - run_reverse_(ns)",
+            "value": "15",
+            "unit": "run reverse (ns) (M)"
+          },
+          {
+            "name": "ShallowWaterPDE - ShallowWaterPDE - wallClock",
+            "value": "10",
+            "unit": "Time (wall clock) (s)"
+          },
+          {
+            "name": "LanguageCoverage - two_composed_operations - run_forward_(ns)",
+            "value": "1573",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - two_composed_operations_looped - run_forward_(ns)",
+            "value": "293",
+            "unit": "run forward (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - two_operations_looped - ratio",
+            "value": "51",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_with_ternary_operators_1 - run_forward_(ns)",
+            "value": "50",
+            "unit": "run forward (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_with_ternary_operators_2 - run_reverse_(ns)",
+            "value": "1533",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations_looped - ratio",
+            "value": "62",
+            "unit": "ratio (K)"
+          },
+          {
+            "name": "LanguageCoverage - two_composed_operations_looped - ratio",
+            "value": "86",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - one_operation_looped_(small) - run_forward_(ns)",
+            "value": "1884",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_1 - run_forward_(ns)",
+            "value": "45",
+            "unit": "run forward (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - one_operation - ratio",
+            "value": "113",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations - run_forward_(ns)",
+            "value": "1573",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_composed_operations - run_forward_(ns)",
+            "value": "1884",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations_looped_(small) - run_reverse_(ns)",
+            "value": "10",
+            "unit": "run reverse (ns) (M)"
+          },
+          {
+            "name": "LanguageCoverage - one_operation_looped_(small) - ratio",
+            "value": "486",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations - run_reverse_(ns)",
+            "value": "1229",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - four_operations_looped - run_reverse_(ns)",
+            "value": "30",
+            "unit": "run reverse (ns) (M)"
+          },
+          {
+            "name": "LanguageCoverage - four_operations_looped_(small) - run_forward_(ns)",
+            "value": "1884",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_1 - ratio",
+            "value": "39",
+            "unit": "ratio"
+          },
+          {
+            "name": "ShallowWaterPDE - ShallowWaterPDE - mallocCountTotal",
+            "value": "18",
+            "unit": "Malloc (total) (M)"
+          },
+          {
+            "name": "LanguageCoverage - one_operation_looped - ratio",
+            "value": "201",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - one_operation_looped - run_reverse_(ns)",
+            "value": "8847",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_operations_looped - run_forward_(ns)",
+            "value": "2245",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - four_operations_looped - ratio",
+            "value": "15",
+            "unit": "ratio (K)"
+          },
+          {
+            "name": "LanguageCoverage - eight_operations_looped - ratio",
+            "value": "39",
+            "unit": "ratio (K)"
+          },
+          {
+            "name": "LanguageCoverage - sixteen_composed_operations - run_reverse_(ns)",
+            "value": "1928",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - two_composed_operations - run_reverse_(ns)",
+            "value": "285",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - two_composed_operations - ratio",
+            "value": "181",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - eight_operations_looped - run_forward_(ns)",
+            "value": "1713",
+            "unit": "run forward (ns)"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_2 - run_forward_(ns)",
+            "value": "63",
+            "unit": "run forward (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - four_operations_looped_(small) - ratio",
+            "value": "1484",
+            "unit": "ratio"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed_arithmetic_with_ternary_operators_1 - run_reverse_(ns)",
+            "value": "2169",
+            "unit": "run reverse (ns) (K)"
+          },
+          {
+            "name": "LanguageCoverage - two_composed_operations_looped - run_reverse_(ns)",
+            "value": "25",
+            "unit": "run reverse (ns) (M)"
           }
         ]
       }
