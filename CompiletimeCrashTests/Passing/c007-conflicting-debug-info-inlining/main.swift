@@ -1,3 +1,7 @@
+// https://github.com/swiftlang/swift/pull/65245
+// https://github.com/swiftlang/swift/issues/58660
+// Fails to compile on Linux
+
 // RUN: %target-swift-frontend -emit-sil -O -g %s | %FileCheck %s
 
 // REQUIRES: swift_in_compiler

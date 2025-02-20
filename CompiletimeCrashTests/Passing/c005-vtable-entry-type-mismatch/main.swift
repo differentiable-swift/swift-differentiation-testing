@@ -1,4 +1,7 @@
 // https://github.com/swiftlang/swift/issues/53490
+// This error occurs because class Super is non-trivial but struct Super.AllDifferentiableVariables is trivial.
+// Should be fixed by TF-625 by making differentials/pullbacks maximally indirect.
+
 import _Differentiation
 
 class Super: Differentiable {
