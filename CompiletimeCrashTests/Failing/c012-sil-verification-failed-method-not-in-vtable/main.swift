@@ -21,7 +21,8 @@ public final class Platform {
     public static var service: PlatformAPI = CpuService()
 }
 
-@differentiable(reverse,where T: DifferentiableTensorView)
+@differentiable(reverse
+    where T: DifferentiableTensorView)
 public func abs<T: DifferentiableTensorView>(_ x: T) -> T where T.Element: Numeric {
     Platform.service.abs(x)
 }
