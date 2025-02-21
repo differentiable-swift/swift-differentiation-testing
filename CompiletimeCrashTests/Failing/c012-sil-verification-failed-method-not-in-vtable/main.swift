@@ -9,19 +9,20 @@ public protocol TensorView {
 public protocol DifferentiableTensorView: TensorView & Differentiable where Self == TangentVector {}
 
 public protocol PlatformAPI {
-    @differentiable
+    @differentiable(reverse)
     func abs<T>(_ x: T) -> T where T: DifferentiableTensorView, T.Element: Numeric
 }
 public class CpuService: PlatformAPI {
-  @differentiable
-  public func abs<T>(_ x: T) -> T where T: DifferentiableTensorView, T.Element: Numeric { x }
+    @differentiable(reverse)
+    public func abs<T>(_ x: T) -> T where T: DifferentiableTensorView, T.Element: Numeric { x }
 }
 
 public final class Platform {
     public static var service: PlatformAPI = CpuService()
 }
 
-@differentiable(where T: DifferentiableTensorView)
+@differentiable(reverse
+    where T: DifferentiableTensorView)
 public func abs<T: DifferentiableTensorView>(_ x: T) -> T where T.Element: Numeric {
-  Platform.service.abs(x)
+    Platform.service.abs(x)
 }

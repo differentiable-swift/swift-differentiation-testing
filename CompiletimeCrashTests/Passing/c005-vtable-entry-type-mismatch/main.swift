@@ -9,14 +9,14 @@ class Super: Differentiable {
     // Dummy to make `Super.AllDifferentiableVariables` be nontrivial.
     // var _nontrivial: [Float] = []
 
-    @differentiable(wrt: self)
+    @differentiable(reverse,wrt: self)
     func f() -> Float {
         return 1
     }
 }
 
 class Sub: Super {
-    @differentiable(wrt: self)
+    @differentiable(reverse,wrt: self)
     override func f() -> Float {
         return 1
     }
