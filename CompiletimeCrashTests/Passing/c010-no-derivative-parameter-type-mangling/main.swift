@@ -1,5 +1,5 @@
 // ===============================================
-// https://github.com/swiftlang/swift/issues/55466 
+// https://github.com/swiftlang/swift/issues/55466
 // ===============================================
 
 // RUN: %target-build-swift -g %s
@@ -9,7 +9,7 @@
 
 import _Differentiation
 func id(_ x: Float, _ y: Float) -> Float { x }
-let transformed: @differentiable (Float, @noDerivative Float) -> Float = id
+let transformed: @differentiable(reverse) (Float, @noDerivative Float) -> Float = id
 
 // Incorrect reconstructed type for $sS3fIedgyyd_D
 // Original type:
@@ -39,4 +39,3 @@ let transformed: @differentiable (Float, @noDerivative Float) -> Float = id
 // 6  swift                    0x0000000110604152 (anonymous namespace)::IRGenDebugInfoImpl::getOrCreateType(swift::irgen::DebugTypeInfo) (.cold.20) + 146
 // 7  swift                    0x000000010c24ab1e (anonymous namespace)::IRGenDebugInfoImpl::getOrCreateType(swift::irgen::DebugTypeInfo) + 3614
 // 8  swift                    0x000000010c245437 swift::irgen::IRGenDebugInfo::emitGlobalVariableDeclaration(llvm::GlobalVariable*, llvm::StringRef, llvm::StringRef, swift::irgen::DebugTypeInfo, bool, bool, llvm::Optional<swift::SILLocation>) + 167
-
