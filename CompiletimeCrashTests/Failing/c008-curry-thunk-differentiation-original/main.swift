@@ -16,7 +16,7 @@ extension TF_688_Struct: Differentiable where Scalar: Differentiable {
 @differentiable(reverse, wrt: x)
 public func TF_688<Scalar: Differentiable>(
   _ x: TF_688_Struct<Scalar>,
-  reduction: @differentiable (TF_688_Struct<Scalar>) -> TF_688_Struct<Scalar> = TF_688_Struct.id
+  reduction: @differentiable(reverse) (TF_688_Struct<Scalar>) -> TF_688_Struct<Scalar> = TF_688_Struct.id
 ) -> TF_688_Struct<Scalar> {
   reduction(x)
 }
