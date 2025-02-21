@@ -8,12 +8,12 @@ public struct TF_688_Struct<Scalar> {
   var x: Scalar
 }
 extension TF_688_Struct: Differentiable where Scalar: Differentiable {
-  @differentiable
+  @differentiable(reverse)
   public static func id(x: Self) -> Self {
     return x
   }
 }
-@differentiable(wrt: x)
+@differentiable(reverse, wrt: x)
 public func TF_688<Scalar: Differentiable>(
   _ x: TF_688_Struct<Scalar>,
   reduction: @differentiable (TF_688_Struct<Scalar>) -> TF_688_Struct<Scalar> = TF_688_Struct.id

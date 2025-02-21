@@ -5,7 +5,7 @@ import _Differentiation
 public class Tracked<T> {}
 extension Tracked: Differentiable where T: Differentiable {}
 
-@differentiable
+@differentiable(reverse)
 func callback(_ x: inout Tracked<Float>.TangentVector) {}
 
 public extension Differentiable {
@@ -33,7 +33,7 @@ public extension Differentiable {
   }
 }
 
-@differentiable
+@differentiable(reverse)
 func caller(_ x: Tracked<Float>) -> Tracked<Float> {
   return x.withDerivative(callback)
 }
