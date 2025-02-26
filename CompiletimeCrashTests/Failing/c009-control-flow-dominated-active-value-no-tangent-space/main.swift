@@ -5,7 +5,7 @@
 
 import _Differentiation
 
-@differentiable
+@differentiable(reverse)
 func TF_966(_ x: Float, _ bool: Bool) -> Float {
   let tuple = (x, 1)
   let result = bool ? tuple : tuple
