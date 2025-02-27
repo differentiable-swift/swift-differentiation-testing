@@ -21,7 +21,7 @@ jobs:
         run: python --version
       - name: Install dependencies
         run: |
-          pip install "lit=18.1.8"
+          python -m pip install "lit=18.1.8"
       - name: Verify package installation
         run: python -c "import lit; print(lit.__version__)"
       - run: (cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh)
