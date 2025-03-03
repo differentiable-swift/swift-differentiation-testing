@@ -1,3 +1,4 @@
+// RUN: swiftc main.swift -o main 2>&1 | ../check.py check
 import _Differentiation
 
 // https://github.com/swiftlang/swift/issues/55882
