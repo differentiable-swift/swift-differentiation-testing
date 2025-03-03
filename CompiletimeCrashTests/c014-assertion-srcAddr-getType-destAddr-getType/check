@@ -1,0 +1,6 @@
+error: compile command failed
+Please submit a bug report
+Stack dump:
+While evaluating request IRGenRequest(IR Generation for file "main.swift")
+While emitting IR SIL function
+for 'f(_:)' (at main.swift:11:3)

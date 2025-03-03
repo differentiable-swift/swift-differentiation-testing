@@ -1,0 +1,7 @@
+error: compile command failed
+Please submit a bug report
+Stack dump:
+for 'j(_:_:_:)' (at main.swift:14:45)
+sil_differentiability_witness private [reverse] [parameters 1 2] [results 0]
+While generating VJP for SIL function 
+for 'init(c:v:d:)'

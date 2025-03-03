@@ -1,0 +1,6 @@
+error: compile command failed due to signal 11
+Please submit a bug report
+Stack dump:
+While processing // differentiability witness for abs<A>(_:)
+sil_differentiability_witness [serialized] [reverse] [parameters 0] [results 0] <T where T : DifferentiableTensorView, T.Element : Numeric> 
+for 'abs(_:)' (at main.swift:26:8)

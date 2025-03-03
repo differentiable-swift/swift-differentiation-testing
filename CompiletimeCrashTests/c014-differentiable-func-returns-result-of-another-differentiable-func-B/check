@@ -1,0 +1,8 @@
+error: compile command failed
+Please submit a bug report
+Stack dump:
+While evaluating request ExecuteSILPipelineRequest(Run pipelines { Mandatory Diagnostic Passes + Enabling Optimization Passes } on SIL for main)
+While running pass #383 SILModuleTransform "Differentiation".
+While canonicalizing `differentiable_function` SIL node   %7 = differentiable_function [parameters 1] [results 0] %6 : $@convention(method) (@owned Array<Bool>, Float, @thin I.Type) -> @owned I // user: %8
+ for 'j(_:)' (at main.swift:11:40)
+While processing // differentiability witness for I.init(c:d:)
