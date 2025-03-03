@@ -10,6 +10,9 @@ RuntimeCrashTests/**
 !CompiletimeCrashTests/**/*.*
 !RuntimeCrashTests/**/*.*
 
+# Unignore ground truths
+!CompiletimeCrashTests/check
+
 ### Above combination will ignore all files without extension in the folders CompiletimeCrashTests and RuntimeCrashTests ###
 ### This is to avoid adding build products from single file reproducers to git ###
 
