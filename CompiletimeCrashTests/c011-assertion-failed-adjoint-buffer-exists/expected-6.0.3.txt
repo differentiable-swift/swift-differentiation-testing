@@ -1,3 +1,4 @@
+# ERROR
 error: function is not differentiable
 guard let f else { return nil }
 note: expression is not differentiable

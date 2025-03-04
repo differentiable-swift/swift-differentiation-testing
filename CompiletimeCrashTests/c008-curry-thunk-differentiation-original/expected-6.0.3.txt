@@ -1,2 +1,3 @@
+# ERROR
 error: function is not differentiable
 differentiated functions in default arguments must be marked '@differentiable' or have a public '@derivative'; this is not possible with a closure, make a top-level function instead

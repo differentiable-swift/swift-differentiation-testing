@@ -1,3 +1,4 @@
+# ERROR
 main.swift:7:2: error: function is not differentiable
 note: when differentiating this function definition
 note: cannot differentiate through a non-differentiable result; do you want to use 'withoutDerivative(at:)'?
