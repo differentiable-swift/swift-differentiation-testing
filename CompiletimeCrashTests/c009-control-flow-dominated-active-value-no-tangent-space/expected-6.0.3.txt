@@ -1,3 +1,4 @@
+# ERROR
 main.swift:8:2: error: function is not differentiable
 let result = bool ? tuple : tuple
 note: expression is not differentiable

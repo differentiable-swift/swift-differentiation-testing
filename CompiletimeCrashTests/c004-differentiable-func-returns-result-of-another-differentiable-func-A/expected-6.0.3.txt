@@ -1,3 +1,4 @@
+# CRASH
 error: compile command failed
 Please submit a bug report
 Stack dump:
