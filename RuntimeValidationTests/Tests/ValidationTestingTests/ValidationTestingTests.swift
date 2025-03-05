@@ -133,6 +133,8 @@ struct ValidationTestingTests {
     @Test(arguments: [10.0])
     func testInoutMutating(_ x: Float) {
         // incorrect derivative because modify accessor not active
+        // NOTE: this involves differentiating through classes, which is not expected to be supported
+        // https://github.com/swiftlang/swift/issues/54685#issuecomment-2093717451
         withKnownIssue {
             // error: A '@differentiable' function can only be formed from a reference to a 'func', 'init' or a literal closure
             // let result = valueWithGradient(at: x, of: squaredClass)
