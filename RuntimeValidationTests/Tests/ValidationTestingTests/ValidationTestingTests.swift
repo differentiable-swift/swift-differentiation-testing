@@ -34,6 +34,7 @@ class Class: Differentiable {
 
 @_silgen_name("inout_mutating")
 func inoutMutating(_ c: inout Class) {
+    // the modify accessor is not active, leading to incorrect derivatives
     c.x *= c.x
 }
 
@@ -48,12 +49,13 @@ func squaredClass(_ x: Float) -> Float {
 // ===============================================
 @differentiable(reverse)  // NOTE: This wasn't there in the original reproducer
 func tupleElementGeneric<T: Differentiable>(_ x: T, _ y: T) -> [T] {
+    // (fixed) Incorrect derivative for array literal with tuple_element_addr elements
     var tuple = (x, y)
     return [tuple.0, tuple.1]
 }
 
 // ===============================================
-
+// https://github.com/swiftlang/swift/issues/58070
 // ===============================================
 extension Double {
     fileprivate func addingThree(_ lhs: Self, _ mhs: Self, _ rhs: Self) -> Self {
@@ -130,6 +132,7 @@ struct ValidationTestingTests {
 
     @Test(arguments: [10.0])
     func testInoutMutating(_ x: Float) {
+        // incorrect derivative because modify accessor not active
         withKnownIssue {
             // error: A '@differentiable' function can only be formed from a reference to a 'func', 'init' or a literal closure
             // let result = valueWithGradient(at: x, of: squaredClass)
@@ -141,12 +144,14 @@ struct ValidationTestingTests {
 
     @Test
     func testTupleElementPullback() {
+        // (fixed) incorrect derivative for array literal with tuple element elements
         let pb = pullback(at: Float(3), 4, of: { tupleElementGeneric($0, $1) })
         #expect((1.0 as Float, 1.0 as Float) == pb(.init([1, 1])))
     }
 
     @Test(arguments: [(2.0, 3.0, 4.0)])
     func testAddingThree(_ x: Double, y: Double, z: Double) {
+        // incorrect results when differentiating a mutating function
         withKnownIssue {
             #expect((2, 3, 4) == gradient(at: 2, 3, 4, of: { 10.addingThree($0, $1, $2) }))
             #expect((2, 3, 4) == gradient(at: 2, 3, 4, of: { altAddingThree(10, $0, $1, $2) }))
