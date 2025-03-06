@@ -3,6 +3,10 @@ echo -e "Running Compiletime Crash tests\n"
 
 echo -e "Compiletime Crash tests\n"
 
+if [[ $OSTYPE == 'darwin'* ]]; then
+        export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+fi
+
 get_reproducer_type() {
     local file="$1"
     local first_line
@@ -14,6 +18,7 @@ get_reproducer_type() {
     if [[ $first_line =~ ^#[[:space:]]*(OK|ERROR|CRASH|XERROR) ]]; then
         # capture groups not working?
         # echo ="${BASH_REMATCH[1]}"
+        # strips "#\s*" from the left, and spaces and newlines from the right
         echo `echo $first_line | sed 's/^[[:space:]]*# *//;s/[[:space:]]*$//'`
     else
         echo "ERROR: No header match"
