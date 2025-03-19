@@ -37,41 +37,53 @@ let benchmarks: @Sendable () -> Void = {
     Benchmark(
         "one operation",
         forward: { benchmark in
+            var x: Float = 2.0
             for _ in benchmark.scaledIterations {
-                blackHole(oneOperation(a: 2))
+                x = oneOperation(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var y: Float = 2.0
             for _ in benchmark.scaledIterations {
-                let thing = gradient(at: 2, of: { v in oneOperation(a: v) })
-                blackHole(thing)
+                y = gradient(at: y, of: { v in oneOperation(a: v) })
             }
+            blackHole(y)
         }
     )
     Benchmark(
         "sixteen operations",
         forward: { benchmark in
+            var x = Float.random(in: 1.5...2.5)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(sixteenOperations(a: 2))
+                x = sixteenOperations(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var y: Float = 2.0
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in sixteenOperations(a: v) }))
+                y = gradient(at: y, of: { v in sixteenOperations(a: v) })
             }
+            blackHole(y)
         }
     )
     Benchmark(
         "two composed operations",
         forward: { benchmark in
+            var x: Float = 2.0
             for _ in benchmark.scaledIterations {
-                blackHole(twoComposedOperations(a: 2))
+                x = twoComposedOperations(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var y: Float = 2.0
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in twoComposedOperations(a: v) }))
+                y = gradient(at: y, of: { v in twoComposedOperations(a: v) })
             }
+            blackHole(y)
         }
     )
     Benchmark(
