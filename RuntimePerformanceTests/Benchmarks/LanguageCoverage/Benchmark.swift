@@ -5,7 +5,7 @@ import _Differentiation
 enum CustomMeasurement {
     static let forward = BenchmarkMetric.custom("run forward (ns)", polarity: .prefersSmaller, useScalingFactor: true)
     static let reverse = BenchmarkMetric.custom("run reverse (ns)", polarity: .prefersSmaller, useScalingFactor: true)
-    static let ratio = BenchmarkMetric.custom("ratio", polarity: .prefersSmaller, useScalingFactor: true)
+    static let ratio = BenchmarkMetric.custom("ratio", polarity: .prefersSmaller, useScalingFactor: false)
 }
 
 extension BenchmarkMetric: @unchecked @retroactive Sendable {}
