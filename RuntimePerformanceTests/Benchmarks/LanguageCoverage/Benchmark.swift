@@ -38,6 +38,7 @@ let benchmarks: @Sendable () -> Void = {
         "one operation",
         forward: { benchmark in
             var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
                 x = oneOperation(a: x)
             }
@@ -64,6 +65,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             var y: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
                 y = gradient(at: y, of: { v in sixteenOperations(a: v) })
             }
@@ -74,6 +76,7 @@ let benchmarks: @Sendable () -> Void = {
         "two composed operations",
         forward: { benchmark in
             var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
                 x = twoComposedOperations(a: x)
             }
@@ -81,6 +84,7 @@ let benchmarks: @Sendable () -> Void = {
         },
         reverse: { benchmark in
             var y: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
                 y = gradient(at: y, of: { v in twoComposedOperations(a: v) })
             }
