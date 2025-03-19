@@ -45,11 +45,11 @@ let benchmarks: @Sendable () -> Void = {
             blackHole(x)
         },
         reverse: { benchmark in
-            var y: Float = 2.0
+            var x: Float = 2.0
             for _ in benchmark.scaledIterations {
-                y = gradient(at: y, of: { v in oneOperation(a: v) })
+                x = gradient(at: x, of: { v in oneOperation(a: v) })
             }
-            blackHole(y)
+            blackHole(x)
         }
     )
     Benchmark(
@@ -64,12 +64,12 @@ let benchmarks: @Sendable () -> Void = {
             blackHole(x)
         },
         reverse: { benchmark in
-            var y: Float = 2.0
+            var x: Float = 2.0
             clobber(&x)
             for _ in benchmark.scaledIterations {
-                y = gradient(at: y, of: { v in sixteenOperations(a: v) })
+                x = gradient(at: x, of: { v in sixteenOperations(a: v) })
             }
-            blackHole(y)
+            blackHole(x)
         }
     )
     Benchmark(
@@ -83,25 +83,31 @@ let benchmarks: @Sendable () -> Void = {
             blackHole(x)
         },
         reverse: { benchmark in
-            var y: Float = 2.0
+            var x: Float = 2.0
             clobber(&x)
             for _ in benchmark.scaledIterations {
-                y = gradient(at: y, of: { v in twoComposedOperations(a: v) })
+                x = gradient(at: x, of: { v in twoComposedOperations(a: v) })
             }
-            blackHole(y)
+            blackHole(x)
         }
     )
     Benchmark(
         "sixteen composed operations",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(sixteenComposedOperations(a: 2))
+                x = sixteenComposedOperations(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in sixteenComposedOperations(a: v) }))
+                x = gradient(at: x, of: { v in sixteenComposedOperations(a: v) })
             }
+            blackHole(x)
         }
     )
     
@@ -110,131 +116,191 @@ let benchmarks: @Sendable () -> Void = {
     Benchmark(
         "one operation looped (small)",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(oneOperationLoopedSmall(a: 2))
+                x = oneOperationLoopedSmall(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in oneOperationLoopedSmall(a: v) }))
+                x = gradient(at: x, of: { v in oneOperationLoopedSmall(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "four operations looped (small)",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(fourOperationsLoopedSmall(a: 2))
+                x = fourOperationsLoopedSmall(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in fourOperationsLoopedSmall(a: v) }))
+                x = gradient(at: x, of: { v in fourOperationsLoopedSmall(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "sixteen operations looped (small)",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(sixteenOperationsLoopedSmall(a: 2))
+                x = sixteenOperationsLoopedSmall(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in sixteenOperationsLoopedSmall(a: v) }))
+                x = gradient(at: x, of: { v in sixteenOperationsLoopedSmall(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "one operation looped",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(oneOperationLooped(a: 2))
+                x = oneOperationLooped(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in oneOperationLooped(a: v) }))
+                x = gradient(at: x, of: { v in oneOperationLooped(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "two operations looped",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(twoOperationsLooped(a: 2))
+                x = twoOperationsLooped(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in twoOperationsLooped(a: v) }))
+                x = gradient(at: x, of: { v in twoOperationsLooped(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "four operations looped",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(fourOperationsLooped(a: 2))
+                x = fourOperationsLooped(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in fourOperationsLooped(a: v) }))
+                x = gradient(at: x, of: { v in fourOperationsLooped(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "eight operations looped",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(eightOperationsLooped(a: 2))
+                x = eightOperationsLooped(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in eightOperationsLooped(a: v) }))
+                x = gradient(at: x, of: { v in eightOperationsLooped(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "sixteen operations looped",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(sixteenOperationsLooped(a: 2))
+                x = sixteenOperationsLooped(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in sixteenOperationsLooped(a: v) }))
+                x = gradient(at: x, of: { v in sixteenOperationsLooped(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "two composed operations looped",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(twoComposedOperationsLooped(a: 2))
+                x = twoComposedOperationsLooped(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in twoComposedOperationsLooped(a: v) }))
+                x = gradient(at: x, of: { v in twoComposedOperationsLooped(a: v) })
             }
+            blackHole(x)
         }
     )
     Benchmark(
         "sixteen composed operations looped",
         forward: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(sixteenComposedOperationsLooped(a: 2))
+                x = sixteenComposedOperationsLooped(a: x)
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var x: Float = 2.0
+            clobber(&x)
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 2, of: { v in sixteenComposedOperationsLooped(a: v) }))
+                x = gradient(at: x, of: { v in sixteenComposedOperationsLooped(a: v) })
             }
+            blackHole(x)
         }
     )
 
