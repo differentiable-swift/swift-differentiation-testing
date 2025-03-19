@@ -54,7 +54,8 @@ let benchmarks: @Sendable () -> Void = {
     Benchmark(
         "sixteen operations",
         forward: { benchmark in
-            var x = Float.random(in: 1.5...2.5)
+            var x: Float = 2.0
+            clobber(&x)
             benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
                 x = sixteenOperations(a: x)
