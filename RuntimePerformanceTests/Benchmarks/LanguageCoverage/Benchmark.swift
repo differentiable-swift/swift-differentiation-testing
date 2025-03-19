@@ -309,54 +309,98 @@ let benchmarks: @Sendable () -> Void = {
     Benchmark(
         "fuzzed arithmetic 1",
         forward: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(fuzzedMath1(1.0, 2.0, 3.0))
+                x = fuzzedMath1(x, y, z)
+                y += x
+                z += x
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMath1(x, y, z) }))
+                (x, y, z) = gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMath1(x, y, z) })
             }
+            benchmark.stopMeasurement()
+            blackHole(x); blackHole(y); blackHole(z)
         }
     )
     Benchmark(
         "fuzzed arithmetic 2",
         forward: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(fuzzedMath2(1.0, 2.0, 3.0))
+                x = fuzzedMath2(x, y, z)
+                y += x
+                z += x
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMath2(x, y, z) }))
+                (x, y, z) = gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMath2(x, y, z) })
             }
+            benchmark.stopMeasurement()
+            blackHole(x); blackHole(y); blackHole(z)
         }
     )
 
     Benchmark(
         "fuzzed arithmetic with ternary operators 1",
         forward: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(fuzzedMathTernary1(1.0, 2.0, 3.0))
+                x = fuzzedMathTernary1(x, y, z)
+                y += x
+                z += x
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMathTernary1(x, y, z) }))
+                (x, y, z) = gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMathTernary1(x, y, z) })
             }
+            benchmark.stopMeasurement()
+            blackHole(x); blackHole(y); blackHole(z)
         }
     )
     Benchmark(
         "fuzzed arithmetic with ternary operators 2",
         forward: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(fuzzedMathTernary2(1.0, 2.0, 3.0))
+                x = fuzzedMathTernary2(x, y, z)
+                y += x
+                z += x
             }
+            blackHole(x)
         },
         reverse: { benchmark in
+            var (x, y, z): (Float, Float, Float) = (1.0, 2.0, 3.0)
+            clobber(&x); clobber(&y); clobber(&z)
+            benchmark.startMeasurement()
             for _ in benchmark.scaledIterations {
-                blackHole(gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMathTernary2(x, y, z) }))
+                (x, y, z) = gradient(at: 1.0, 2.0, 3.0, of: { x, y, z in fuzzedMathTernary2(x, y, z) })
             }
+            benchmark.stopMeasurement()
+            blackHole(x); blackHole(y); blackHole(z)
         }
     )
 }
