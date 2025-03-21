@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# TODO: (Chaitanya) ammend this when done
 # This script is a quick-and-dirty parser for the `histogramPercentiles` outupt of package-benchmark: https://swiftpackageindex.com/ordo-one/package-benchmark/1.27.4/documentation/benchmark/exportingbenchmarks#Saved-Formats
 # that converts it into the `customBiggerIsBetter` json format needed by `github-action-benchmark`: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#examples
 # 
@@ -10,20 +11,32 @@
 import csv
 import os
 import json
+import pandas as pd
+from typing import Tuple  
 
 gh_action_formatted = []
-for file in os.listdir("./benchmark-raw-output"):
-    with open(f"./benchmark-raw-output/{file}") as bench_result:
-        # filename format: Current_run.LanguageCoverage.sixteen_composed_operations_looped.ratio.histogram.percentiles.tsv
-        name_components = file.split(".") 
-        name = f"{name_components[1]} - {name_components[2]} - {name_components[3]}"
-        for line in csv.reader(bench_result, delimiter="\t"):
-            if line[0] == "Percentile":
-                unit = line[1].strip()
+df_full = pd.read_csv("./benchmark-raw-output/Current_run.influx.csv", skiprows=1)
+# select columns of interest
+df = df_full[['measurement', 'test', 'metric', 'unit', 'percentile', 'value', 'iterations']]
+# we care only about p50 at the moment
+df_medians = df[df['percentile'] == 50.0]
 
-            # just take the 50th percentile for now
-            if line[0] == "50":
-                gh_action_formatted.append({"name": name, "unit": unit, "value": line[1]})
+gdf = df_medians.groupby(['measurement', 'test'])
+for (test, result) in gdf:
+    name_prefix = f"{test[0]} - {test[1]} - {result['metric'].iloc[0]}"
+    for (_, row) in result.iterrows():
+        metric = row['metric']
+        # unit = row['unit']
+        # unit, scale = renormalize(unit) 
+        # value = row['value'] / scale
+        value = row['value']
+        name = f"{name_prefix} - {metric}"
+        unit = row['unit']
+        if metric == "runforward(ns)" or metric == "runreverse(ns)":
+            unit = 'ns'  # hard-coded case because of custom metrics
+        elif unit in ('K','M','G'):
+            unit = ''  # value in influx format not affected by dimensionless units 
+        gh_action_formatted.append({'name': name, 'unit': unit, 'value': value})
 
 res = json.dumps(gh_action_formatted)
 with open("bench-mean-results.json", "w") as f:
