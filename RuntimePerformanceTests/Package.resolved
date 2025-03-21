@@ -1,5 +1,5 @@
 {
-  "originHash" : "da430e475333b1c44735f2fa2039f17a0950678e30067467551e17414a6dee97",
+  "originHash" : "c904a6a501a9d1f10fa2dd02f91cfba2ca658033d434e746e671ebf936476691",
   "pins" : [
     {
       "identity" : "hdrhistogram-swift",
@@ -15,7 +15,6 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loonatick-src/package-benchmark",
       "state" : {
-        "branch" : "main",
         "revision" : "94f97d3c8e766869c641129f73bed83feb422ae5"
       }
     },
