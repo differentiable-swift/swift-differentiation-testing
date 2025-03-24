@@ -1,0 +1,4 @@
+# CRASH
+error: fatal error encountered during compilation; please submit a bug report
+unsupported collection upcast kind
+Stack dump:
