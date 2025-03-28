@@ -9,7 +9,7 @@ let package = Package(
         .macOS(.v13),
     ],
     dependencies: [
-        .package(url: "https://github.com/ordo-one/package-benchmark", .upToNextMajor(from: "1.27.4")),
+        .package(url: "https://github.com/loonatick-src/package-benchmark", revision: "94f97d3c8e766869c641129f73bed83feb422ae5"),
         .package(url: "https://github.com/tayloraswift/swift-png", from: "4.4.0"),
     ],
     targets: [
