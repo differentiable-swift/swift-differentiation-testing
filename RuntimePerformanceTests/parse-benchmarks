@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-# TODO: (Chaitanya) ammend this when done
-# This script is a quick-and-dirty parser for the `histogramPercentiles` outupt of package-benchmark: https://swiftpackageindex.com/ordo-one/package-benchmark/1.27.4/documentation/benchmark/exportingbenchmarks#Saved-Formats
-# that converts it into the `customBiggerIsBetter` json format needed by `github-action-benchmark`: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#examples
-# 
+# This script is a quick-and-dirty parser for the `influx` outupt of package-benchmark: https://swiftpackageindex.com/ordo-one/package-benchmark/1.27.4/documentation/benchmark/exportingbenchmarks#Saved-Formats
+# that converts it into the `customBiggerIsBetter` json format needed by `github-action-benchmark`: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#examples.
+# This format was chosen over the others for the following reasons.
+# 1. Presents raw values instead of scaling them for pretty-prenting, normalization etc.
+# 2. Contains platform information and timestamps, all benchmark results are incomplete without this information.
 # package-benchmark does support `jmh` output, but **only** for benchmarks with a throughput metric, which ours are not using (as it's not a
 # valuable metric in this case). Instead, this script just takes the 50th percentile result for each benchmark and passes that to the
 # benchmark action.
@@ -26,9 +27,6 @@ for (test, result) in gdf:
     name_prefix = f"{test[0]} - {test[1]} - {result['metric'].iloc[0]}"
     for (_, row) in result.iterrows():
         metric = row['metric']
-        # unit = row['unit']
-        # unit, scale = renormalize(unit) 
-        # value = row['value'] / scale
         value = row['value']
         name = f"{name_prefix} - {metric}"
         unit = row['unit']
