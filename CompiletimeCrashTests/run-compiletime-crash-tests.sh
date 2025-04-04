@@ -7,6 +7,13 @@ if [[ $OSTYPE == 'darwin'* ]]; then
         export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 fi
 
+# `get_reproduce_type(file)`
+# Reads the first line of `file` and tries to parse it as a reproducer type header.
+# A header is expected to be of the PCRE form ^#\s*(OK|ERROR|CRASH|XERROR)
+# - OK: compiles successfully
+# - ERROR: expected to compile successfully, but throws a compilation error with some diagnostic --OR-- expected to throw a compilation error, but compiler presents a different diagnostic
+# - XERROR: expected to throw compilation error with correct diagnostic
+# - CRASH: crashes the compiler
 get_reproducer_type() {
     local file="$1"
     local first_line
