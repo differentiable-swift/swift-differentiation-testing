@@ -19,11 +19,6 @@ jobs:
           python-version: "3.12"
       - name: Verify Python version
         run: python --version
-      - name: Install dependencies
-        run: |
-          python -m pip install "lit==18.1.8"
-      - name: Verify package installation
-        run: python -c "import lit; print(lit.__version__)"
       - run: (cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh)
 
   runtime-crash-tests:
