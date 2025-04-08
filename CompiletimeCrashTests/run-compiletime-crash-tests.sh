@@ -36,6 +36,8 @@ get_reproducer_type() {
 total_count=0
 fail_count=0
 
+declare -A test_results
+
 for folder in $(find . -type d -mindepth 1 -maxdepth 1); do
     let total_count+=1
     cd "$folder" # navigate to current testing folder
@@ -43,6 +45,7 @@ for folder in $(find . -type d -mindepth 1 -maxdepth 1); do
     source ./build.sh # is expected to set RETURN_CODE variable
     echo "Finished building $folder"
     reproducer_type=$(get_reproducer_type "expected-6.0.3.txt")
+    test_results[$folder]=$reproducer_type
     cd - > /dev/null # navigate back to previous folder
 
     # script expected to succeed
@@ -59,8 +62,22 @@ for folder in $(find . -type d -mindepth 1 -maxdepth 1); do
     fi
 done
 
-echo $total_count
-echo $fail_count
+# format JSON
+json="{"
+first=1
+for test in "${!test_results[@]}"; do
+    value=${test_results[$test]}
+    if [[ $first -eq 0 ]]; then
+        json+=", "
+    fi
+    json+="\"$test\": \"$value\" "
+    first=0
+done
+json+="}"
+
+json="{ \"total_count\": \"$total_count\", \"fail_count\": \"$fail_count\", $json }"
+
+echo $json > compiletime-crash-test-results.json
 
 echo "Finished running all Compiletime Crash tests"
 
