@@ -1,5 +1,5 @@
 {
-  "originHash" : "c904a6a501a9d1f10fa2dd02f91cfba2ca658033d434e746e671ebf936476691",
+  "originHash" : "28214c62b29d4d3a3677354fa7469bca9ef6274b483b192d5d70e52e91edd886",
   "pins" : [
     {
       "identity" : "hdrhistogram-swift",
@@ -13,9 +13,9 @@
     {
       "identity" : "package-benchmark",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/loonatick-src/package-benchmark",
+      "location" : "https://github.com/ordo-one/package-benchmark",
       "state" : {
-        "revision" : "94f97d3c8e766869c641129f73bed83feb422ae5"
+        "revision" : "3db567fb696772df6ba38e47428b3aae94d6f95b"
       }
     },
     {

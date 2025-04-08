@@ -9,7 +9,8 @@ let package = Package(
         .macOS(.v13),
     ],
     dependencies: [
-        .package(url: "https://github.com/loonatick-src/package-benchmark", revision: "94f97d3c8e766869c641129f73bed83feb422ae5"),
+         // TODO: change package-benchmark to release version tag when a release with this commit is cut
+        .package(url: "https://github.com/ordo-one/package-benchmark", revision: "3db567fb696772df6ba38e47428b3aae94d6f95b"), 
         .package(url: "https://github.com/tayloraswift/swift-png", from: "4.4.0"),
     ],
     targets: [
