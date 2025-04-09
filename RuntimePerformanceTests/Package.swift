@@ -38,5 +38,9 @@ let package = Package(
                 .plugin(name: "BenchmarkPlugin", package: "package-benchmark"),
             ]
         ),
+        .executableTarget(
+            name: "BuildingSimulation",
+            path: "Benchmarks/BuildingSimulation"
+        )
     ]
 )
