@@ -40,7 +40,13 @@ let package = Package(
         ),
         .executableTarget(
             name: "BuildingSimulation",
-            path: "Benchmarks/BuildingSimulation"
+            dependencies: [
+                .product(name: "Benchmark", package: "package-benchmark"),
+            ],
+            path: "Benchmarks/BuildingSimulation",
+            plugins: [
+                .plugin(name: "BenchmarkPlugin", package: "package-benchmark")
+            ]
         )
     ]
 )
