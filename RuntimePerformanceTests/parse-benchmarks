@@ -13,10 +13,12 @@ import csv
 import os
 import json
 import pandas as pd
-from typing import Tuple  
+from typing import Tuple
+from numbers import Number
+from math import isnan
 
 gh_action_formatted = []
-df_full = pd.read_csv("./benchmark-raw-output/Current_run.influx.csv", skiprows=1)
+df_full = pd.read_csv("./benchmark-raw-output/Current_run.influx.csv", skiprows=1, dtype={'unit': str})
 # select columns of interest
 df = df_full[['measurement', 'test', 'metric', 'unit', 'percentile', 'value', 'iterations']]
 # we care only about p50 at the moment
@@ -33,7 +35,9 @@ for (test, result) in gdf:
         if metric == "runforward(ns)" or metric == "runreverse(ns)":
             unit = 'ns'  # hard-coded case because of custom metrics
         elif unit in ('K','M','G'):
-            unit = ''  # value in influx format not affected by dimensionless units 
+            unit = ''  # value in influx format not affected by dimensionless units
+        elif isinstance(unit, Number) and isnan(unit):
+            unit = ''  # dataframe does not assign dtype consistently
         gh_action_formatted.append({'name': name, 'unit': unit, 'value': value})
 
 res = json.dumps(gh_action_formatted)
