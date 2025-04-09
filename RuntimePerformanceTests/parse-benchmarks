@@ -34,9 +34,7 @@ for (test, result) in gdf:
         value = row['value']
         name = f"{name_prefix} - {metric}"  # E.g. "LanguaguageCoverage - one operation - Time(wallclock)"
         unit = row['unit']
-        if metric == "runforward(ns)" or metric == "runreverse(ns)":
-            unit = 'ns'  # hard-coded case because of custom metrics
-        elif unit in ('K','M','G'):
+        if unit in ('K','M','G'):
             unit = ''  # value in influx format not affected by dimensionless units
         elif isinstance(unit, Number) and isnan(unit):
             unit = ''  # dataframe does not assign dtype consistently
