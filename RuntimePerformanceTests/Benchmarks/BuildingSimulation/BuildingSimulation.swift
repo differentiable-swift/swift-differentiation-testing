@@ -159,8 +159,6 @@ func updateSourceTank(store: TankType, quanta: QuantaType) -> TankAndQuanta {
     return TankAndQuanta(tank: updatedStore, quanta: updatedQuanta)
 }
 
-var simParams = SimParams(startingTemp: 33.3)
-
 @differentiable(reverse)
 @inlinable public func absDifferentiable(_ value: Float) -> Float {
     if value < 0 {
@@ -201,53 +199,9 @@ func simulate(simParams: SimParams) -> Float {
     return slab.temp
 }
 
-var blackHole: Any?
-@inline(never)
-func dontLetTheCompilerOptimizeThisAway<T>(_ x: T) {
-    blackHole = x
-}
-
-func measure<T>(_ block: () throws -> T) throws -> (time: Double, result: T) {
-    let t0 = DispatchTime.now()
-    let result = try block()
-    let t1 = DispatchTime.now()
-    let elapsed = Double(t1.uptimeNanoseconds - t0.uptimeNanoseconds) / 1E9
-    return (elapsed, result)
-}
-
 @differentiable(reverse)
 func fullPipe(simParams: SimParams) -> Float {
     let pred = simulate(simParams: simParams)
     let loss = lossCalc(pred: pred, gt: 27.344767)
     return loss
 }
-
-var totalPureForwardTime: Double = 0
-var totalGradientTime: Double = 0
-
-for _ in 0..<trials {
-    let (forwardOnly, _) = try measure {
-        return fullPipe(simParams: simParams)
-    }
-    dontLetTheCompilerOptimizeThisAway(forwardOnly)
-
-    let (gradientTime, grad) = try measure {
-        return gradient(at: simParams, of: fullPipe)
-    }
-    dontLetTheCompilerOptimizeThisAway(grad)
-
-    if printGradToCompare {
-        print(grad)
-    }
-
-    totalPureForwardTime += forwardOnly
-    totalGradientTime += gradientTime
-}
-
-let averagePureForward = totalPureForwardTime / Double(trials)
-let averageGradient = totalGradientTime / Double(trials)
-
-print("trials: \(trials)")
-print("timesteps: \(timesteps)")
-print("average forward only time: \(averagePureForward) seconds")
-print("average forward and back (gradient) time: \(averageGradient) seconds")
