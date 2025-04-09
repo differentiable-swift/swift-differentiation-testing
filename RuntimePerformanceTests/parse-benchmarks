@@ -26,11 +26,13 @@ df_medians = df[df['percentile'] == 50.0]
 
 gdf = df_medians.groupby(['measurement', 'test'])
 for (test, result) in gdf:
-    name_prefix = f"{test[0]} - {test[1]}"
+    measurement = test[0]    # name of executable target. E.g. "LanguageCoverage", "ShallowWaterPDE"
+    benchmark_name = test[1] # name of benchmark. E.g. "one operation"
+    name_prefix = f"{measurement} - {benchmark_name}" # E.g. "LanguageCoverage - one operation (pass: forward)"
     for (_, row) in result.iterrows():
-        metric = row['metric']
+        metric = row['metric']  # E.g. Time(wallclock), Malloc(total) etc
         value = row['value']
-        name = f"{name_prefix} - {metric}"
+        name = f"{name_prefix} - {metric}"  # E.g. "LanguaguageCoverage - one operation - Time(wallclock)"
         unit = row['unit']
         if metric == "runforward(ns)" or metric == "runreverse(ns)":
             unit = 'ns'  # hard-coded case because of custom metrics
