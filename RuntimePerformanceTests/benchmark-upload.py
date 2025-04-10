@@ -33,7 +33,6 @@ influx_client = influxdb_client.InfluxDBClient(
 write_api = influx_client.write_api(write_options=influxdb_client.client.write_api.SYNCHRONOUS)
 
 github_ref = env.get('GITHUB_REF')
-github_ref_name = env.get('GITHUB_REF_NAME')
 commit_sha = env.get('GITHUB_SHA')
 bucket_name = env.get('INFLUX_BUCKET_NAME')
 
@@ -58,7 +57,6 @@ for benchmark in os.listdir(benchmark_dir):
             point.tag('test', row[label_indices['test']])
             # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables#default-environment-variables
             point.tag('ref', github_ref)
-            point.tag('refName', github_ref_name)
             point.tag('commit', commit_sha)
             point.tag('percentile', percentile_to_tag(float(row[label_indices['percentile']])))
             point.field('metricValue', int(row[label_indices['value']]))
