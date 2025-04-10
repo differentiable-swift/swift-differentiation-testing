@@ -22,9 +22,9 @@ def get_env(variable: str, description: str) -> str:
     return result
 
 
-url = get_env('INFLUX_URL')
-token = get_env('INFLUX_UPLOAD_TOKEN')
-org = get_env('INFLUX_ORG_NAME')
+url = get_env('INFLUX_URL', "Influx URL")
+token = get_env('INFLUX_UPLOAD_TOKEN', "Influx upload token")
+org = get_env('INFLUX_ORG_NAME', "org name")
 influx_client = influxdb_client.InfluxDBClient(
     url=url,
     token = token,
