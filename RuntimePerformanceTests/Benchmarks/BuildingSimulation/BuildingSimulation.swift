@@ -2,8 +2,7 @@ import Foundation
 import _Differentiation
 
 // Simulation parameters
-let trials = 100
-let timesteps = 20
+let timesteps = 1000
 let dTime: Float = 0.1
 let printGradToCompare = false
 

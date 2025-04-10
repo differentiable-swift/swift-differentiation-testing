@@ -3,21 +3,32 @@ import _Differentiation
 
 let benchmarks: @Sendable () -> Void = {
     Benchmark(
-        "BuildingSimulation - forward",
-        configuration: .init(metrics: [.wallClock, .mallocCountTotal])
+        "BuildingSimulation",
+        configuration: .init(tags: ["pass": "regular"])
     ) { benchmark in
-        var simParams = SimParams(startingTemp: 33.3)
+        let simParams = SimParams(startingTemp: 33.3)
         benchmark.startMeasurement()
         blackHole(fullPipe(simParams: simParams))
     }
 
     Benchmark(
-        "BuildingSimulation - gradient",
-        configuration: .init(metrics: [.wallClock, .mallocCountTotal])
-    ) {benchmark in
-        var simParams = SimParams(startingTemp: 33.3)
+        "BuildingSimulation",
+        configuration: .init(tags: ["pass": "forward"])
+    ) { benchmark in
+        let simParams = SimParams(startingTemp: 33.3)
         benchmark.startMeasurement()
-        blackHole(gradient(at: simParams, of: { fullPipe(simParams: $0) } ))
+        blackHole(valueWithPullback(at: simParams, of: { fullPipe(simParams: $0) }))
     }
 
+    Benchmark(
+        "BuildingSimulation",
+        configuration: .init(tags: ["pass": "reverse"])
+    ) { benchmark in
+        let simParams = SimParams(startingTemp: 33.3)
+        var temp: Float = 33.3
+        clobber(&temp)
+        let pullback = valueWithPullback(at: simParams, of: { fullPipe(simParams: $0) }).pullback
+        benchmark.startMeasurement()
+        blackHole(pullback(temp))
+    }
 }
