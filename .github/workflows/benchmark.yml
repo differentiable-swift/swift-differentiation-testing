@@ -26,9 +26,9 @@ jobs:
         run: python --version
       - name: Install dependencies
         run: |
-          python -m pip install "pandas==2.2.3"
+          python -m pip install "pandas~=2.2" "influxdb_client~=1.48"
       - name: Verify package installation
-        run: python -c "import pandas as pd; print(pd.__version__)"
+        run: python -c "import pandas as pd; print(pd.__version__); import influxdb_client; print(influxdb_client.__version__)"
       - run: apt-get -q update && apt-get install -y libjemalloc-dev
       - name: Run benchmarks
         run: cd RuntimePerformanceTests && swift package --allow-writing-to-package-directory benchmark --format influx --path benchmark-raw-output
@@ -50,3 +50,10 @@ jobs:
           fail-on-alert: true
           summary-always: true
           alert-comment-cc-users: '@JaapWijnen'
+      - name: Upload to Influx
+        env:
+          INFLUX_BUCKET_NAME: ${{ secrets.InfluxBucketName }}
+          INFLUX_UPLOAD_TOKEN: ${{ secrets.InfluxUploadToken }}
+          INFLUX_ORG_NAME: ${{ secrets.InfluxOrgName }}
+          INFLUX_URL: ${{ secrets.InfluxURL }}
+        run: cd RuntimePerformanceTests && python benchmark-upload.py
