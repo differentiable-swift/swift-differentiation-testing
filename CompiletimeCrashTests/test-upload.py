@@ -50,6 +50,7 @@ for test, result in results.items():
     point = influxdb_client.Point('compiletime-crash-tests')
     point.tag('processorType', processor_type)
     point.tag('kernelVersion', f"{kernel_name}-{kernel_version}")
+    point.tag('testclass', "crasher")
     point.tag('test', test)
     point.field('status', result)
     point.tag('ref', github_ref)
