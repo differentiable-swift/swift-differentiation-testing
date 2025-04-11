@@ -7,11 +7,11 @@ from os import environ as env
 import influxdb_client
 
 def run_cmd(cmd: [str]) -> str:
-    result = subprocess.run(cmd)
+    result = subprocess.run(cmd, capture_output=True)
     err = result.returncode
     if err:
         raise EnvironmentError(f'Command {' '.join(cmd)} failed with error code {retcode}')
-    return str(result.stdout)
+    return result.stdout.decode()
 
 def get_env(variable: str, description: str) -> str:
     result = env.get(variable)
@@ -20,6 +20,7 @@ def get_env(variable: str, description: str) -> str:
     return result
 
 swift_version_info = run_cmd(['swift', '--version'])
+swift_version = swift_version_info.split("\n")[0]
 processor_type = run_cmd(['uname', '-m'])
 kernel_name = run_cmd(['uname', '-s'])
 kernel_version = run_cmd(['uname', '-r'])
@@ -53,4 +54,7 @@ for test, result in results.items():
     point.field('status', result)
     point.tag('ref', github_ref)
     point.tag('commit', commit_sha)
+    point.tag('swiftVersion', swift_version)
+    print(point)
+    continue
     write_api.write(bucket=bucket_name, record=point)
