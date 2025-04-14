@@ -19,7 +19,7 @@ def get_env(variable: str, description: str) -> str:
         raise EnvironmentError(f"Expected {description} to be in {variable}.")
     return result
 
-swift_version = get_env('SWIFT_VERSION')
+swift_version = get_env('SWIFT_VERSION', "Swift version")
 processor_type = run_cmd(['uname', '-m'])
 kernel_name = run_cmd(['uname', '-s'])
 kernel_version = run_cmd(['uname', '-r'])
