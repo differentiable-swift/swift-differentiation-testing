@@ -37,7 +37,7 @@ jobs:
           INFLUX_ORG_NAME: ${{ secrets.InfluxOrgName }}
           INFLUX_URL: ${{ secrets.InfluxURL }}
           SWIFT_VERSION: ${{ matrix.swift }}
-        run: cd RuntimePerformanceTests && python benchmark-upload.py
+        run: cd CompiletimeCrashTests && python test-upload.py
 
   runtime-crash-tests:
     name: Runtime Crash Tests Swift ${{ matrix.swift }}
