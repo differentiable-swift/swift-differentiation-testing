@@ -39,7 +39,12 @@ influx_client = influxdb_client.InfluxDBClient(
     token = token,
     org=org
 )
-write_api = influx_client.write_api(write_options=influxdb_client.client.write_api.SYNCHRONOUS)
+
+in_ci = 'CI' in env
+if not in_ci:
+    print("DRY RUN: script not being run in CI. Nothing will be uploaded")
+
+write_api = influx_client.write_api(write_options=influxdb_client.client.write_api.SYNCHRONOUS) if in_ci else None
 
 github_ref = env.get('GITHUB_REF')
 commit_sha = env.get('GITHUB_SHA')
@@ -55,6 +60,7 @@ for test, result in results.items():
     point.tag('ref', github_ref)
     point.tag('commit', commit_sha)
     point.tag('swiftVersion', swift_version)
-    print(point)
-    continue
+    if not in_ci:
+        print(f"DRY RUN: {point}")
+        continue
     write_api.write(bucket=bucket_name, record=point)
