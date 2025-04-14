@@ -36,6 +36,7 @@ jobs:
           INFLUX_UPLOAD_TOKEN: ${{ secrets.InfluxUploadToken }}
           INFLUX_ORG_NAME: ${{ secrets.InfluxOrgName }}
           INFLUX_URL: ${{ secrets.InfluxURL }}
+          SWIFT_VERSION: ${{ matrix.swift }}
         run: cd RuntimePerformanceTests && python benchmark-upload.py
 
   runtime-crash-tests:
