@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744701820007,
+  "lastUpdate": 1744724560610,
   "repoUrl": "https://github.com/differentiable-swift/swift-differentiation-testing",
   "entries": {
     "package-benchmark": [
@@ -12558,6 +12558,1464 @@ window.BENCHMARK_DATA = {
           {
             "name": "ShallowWaterPDE - ShallowWaterPDE - Time(wallclock)",
             "value": 10241371504,
+            "unit": "s"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "chaitanya@passivelogic.com",
+            "name": "Chaitanya Kumar"
+          },
+          "committer": {
+            "email": "51789253+loonatick-src@users.noreply.github.com",
+            "name": "Chaitanya Kumar",
+            "username": "loonatick-src"
+          },
+          "distinct": true,
+          "id": "974804f7a6dc105599499e568223185cc04d5799",
+          "message": "ci: use self-hosted runners for benchmarks",
+          "timestamp": "2025-04-15T15:35:17+02:00",
+          "tree_id": "fc337a66798919fe216377f546b234e490d536b8",
+          "url": "https://github.com/differentiable-swift/swift-differentiation-testing/commit/974804f7a6dc105599499e568223185cc04d5799"
+        },
+        "date": 1744724559455,
+        "tool": "customBiggerIsBetter",
+        "benches": [
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: forward) - Malloc(total)",
+            "value": 45058,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: forward) - Memory(residentpeak)",
+            "value": 40484864,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: forward) - Throughput(#/s)",
+            "value": 265,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: forward) - Time(wallclock)",
+            "value": 3772415,
+            "unit": "μs"
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: regular) - Memory(residentpeak)",
+            "value": 36409344,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: regular) - Throughput(#/s)",
+            "value": 24575,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: regular) - Time(wallclock)",
+            "value": 40735,
+            "unit": "μs"
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: reverse) - Memory(residentpeak)",
+            "value": 41254912,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: reverse) - Throughput(#/s)",
+            "value": 256,
+            "unit": ""
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "BuildingSimulation - BuildingSimulation (pass: reverse) - Time(wallclock)",
+            "value": 3901439,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: forward) - Malloc(total)",
+            "value": 1632,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: forward) - Memory(residentpeak)",
+            "value": 34549760,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: forward) - Throughput(#/s)",
+            "value": 6927,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: forward) - Time(wallclock)",
+            "value": 144511,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: regular) - Memory(residentpeak)",
+            "value": 36605952,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: regular) - Throughput(#/s)",
+            "value": 315903,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: regular) - Time(wallclock)",
+            "value": 3169,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: reverse) - Memory(residentpeak)",
+            "value": 32833536,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: reverse) - Throughput(#/s)",
+            "value": 8343,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - eight operations looped (pass: reverse) - Time(wallclock)",
+            "value": 119999,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: forward) - Malloc(total)",
+            "value": 89,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: forward) - Memory(residentpeak)",
+            "value": 32473088,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: forward) - Throughput(#/s)",
+            "value": 88319,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: forward) - Time(wallclock)",
+            "value": 11335,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: regular) - Memory(residentpeak)",
+            "value": 36593664,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: regular) - Throughput(#/s)",
+            "value": 1839103,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: regular) - Time(wallclock)",
+            "value": 544,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: reverse) - Memory(residentpeak)",
+            "value": 36614144,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: reverse) - Throughput(#/s)",
+            "value": 178687,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operation looped (small) (pass: reverse) - Time(wallclock)",
+            "value": 5603,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: forward) - Malloc(total)",
+            "value": 830,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: forward) - Memory(residentpeak)",
+            "value": 34541568,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: forward) - Throughput(#/s)",
+            "value": 12463,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: forward) - Time(wallclock)",
+            "value": 80319,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: regular) - Memory(residentpeak)",
+            "value": 36605952,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: regular) - Throughput(#/s)",
+            "value": 558079,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: regular) - Time(wallclock)",
+            "value": 1792,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: reverse) - Memory(residentpeak)",
+            "value": 36622336,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: reverse) - Throughput(#/s)",
+            "value": 16927,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - four operations looped (pass: reverse) - Time(wallclock)",
+            "value": 59135,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: forward) - Malloc(total)",
+            "value": 62,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: forward) - Memory(residentpeak)",
+            "value": 36737024,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: forward) - Throughput(#/s)",
+            "value": 127039,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: forward) - Time(wallclock)",
+            "value": 7875,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: regular) - Memory(residentpeak)",
+            "value": 34652160,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: regular) - Throughput(#/s)",
+            "value": 1078271,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: regular) - Time(wallclock)",
+            "value": 928,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: reverse) - Memory(residentpeak)",
+            "value": 36737024,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: reverse) - Throughput(#/s)",
+            "value": 179711,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 1 (pass: reverse) - Time(wallclock)",
+            "value": 5571,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: forward) - Malloc(total)",
+            "value": 83,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: forward) - Memory(residentpeak)",
+            "value": 36413440,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: forward) - Throughput(#/s)",
+            "value": 114943,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: forward) - Time(wallclock)",
+            "value": 8711,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: regular) - Memory(residentpeak)",
+            "value": 36737024,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: regular) - Throughput(#/s)",
+            "value": 1041919,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: regular) - Time(wallclock)",
+            "value": 960,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: reverse) - Memory(residentpeak)",
+            "value": 34656256,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: reverse) - Throughput(#/s)",
+            "value": 137087,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic 2 (pass: reverse) - Time(wallclock)",
+            "value": 7299,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: forward) - Malloc(total)",
+            "value": 59,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: forward) - Memory(residentpeak)",
+            "value": 36732928,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: forward) - Throughput(#/s)",
+            "value": 117951,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: forward) - Time(wallclock)",
+            "value": 8487,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: regular) - Memory(residentpeak)",
+            "value": 36745216,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: regular) - Throughput(#/s)",
+            "value": 1116159,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: regular) - Time(wallclock)",
+            "value": 896,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: reverse) - Memory(residentpeak)",
+            "value": 36409344,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: reverse) - Throughput(#/s)",
+            "value": 157823,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 1 (pass: reverse) - Time(wallclock)",
+            "value": 6339,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: forward) - Malloc(total)",
+            "value": 47,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: forward) - Memory(residentpeak)",
+            "value": 36728832,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: forward) - Throughput(#/s)",
+            "value": 145407,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: forward) - Time(wallclock)",
+            "value": 6883,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: regular) - Memory(residentpeak)",
+            "value": 36741120,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: regular) - Throughput(#/s)",
+            "value": 1421311,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: regular) - Time(wallclock)",
+            "value": 704,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: reverse) - Memory(residentpeak)",
+            "value": 34320384,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: reverse) - Throughput(#/s)",
+            "value": 209791,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - fuzzed arithmetic with ternary operators 2 (pass: reverse) - Time(wallclock)",
+            "value": 4771,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: forward) - Malloc(total)",
+            "value": 24,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: forward) - Memory(residentpeak)",
+            "value": 36610048,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: forward) - Throughput(#/s)",
+            "value": 406015,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: forward) - Time(wallclock)",
+            "value": 2465,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: regular) - Memory(residentpeak)",
+            "value": 32784384,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: regular) - Throughput(#/s)",
+            "value": 2083839,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: regular) - Time(wallclock)",
+            "value": 480,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: reverse) - Memory(residentpeak)",
+            "value": 32784384,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: reverse) - Throughput(#/s)",
+            "value": 1736703,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation (pass: reverse) - Time(wallclock)",
+            "value": 576,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: forward) - Malloc(total)",
+            "value": 229,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: forward) - Memory(residentpeak)",
+            "value": 36622336,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: forward) - Throughput(#/s)",
+            "value": 31503,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: forward) - Time(wallclock)",
+            "value": 31759,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: regular) - Memory(residentpeak)",
+            "value": 34521088,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: regular) - Throughput(#/s)",
+            "value": 1488895,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: regular) - Time(wallclock)",
+            "value": 672,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: reverse) - Memory(residentpeak)",
+            "value": 36155392,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: reverse) - Throughput(#/s)",
+            "value": 74431,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (pass: reverse) - Time(wallclock)",
+            "value": 13447,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: forward) - Malloc(total)",
+            "value": 41,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: forward) - Memory(residentpeak)",
+            "value": 34136064,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: forward) - Throughput(#/s)",
+            "value": 120255,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: forward) - Time(wallclock)",
+            "value": 8327,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: regular) - Memory(residentpeak)",
+            "value": 36614144,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: regular) - Throughput(#/s)",
+            "value": 1839103,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: regular) - Time(wallclock)",
+            "value": 544,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: reverse) - Memory(residentpeak)",
+            "value": 36614144,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: reverse) - Throughput(#/s)",
+            "value": 411135,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - one operation looped (small) (pass: reverse) - Time(wallclock)",
+            "value": 2433,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: forward) - Malloc(total)",
+            "value": 70,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: forward) - Memory(residentpeak)",
+            "value": 36597760,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: forward) - Throughput(#/s)",
+            "value": 152447,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: forward) - Time(wallclock)",
+            "value": 6563,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: reverse) - Memory(residentpeak)",
+            "value": 36605952,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: reverse) - Throughput(#/s)",
+            "value": 1839103,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operation (pass: reverse) - Time(wallclock)",
+            "value": 544,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations (pass: regular) - Memory(residentpeak)",
+            "value": 36605952,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations (pass: regular) - Throughput(#/s)",
+            "value": 1953791,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations (pass: regular) - Time(wallclock)",
+            "value": 512,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: forward) - Malloc(total)",
+            "value": 4929,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: forward) - Memory(residentpeak)",
+            "value": 40747008,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: forward) - Throughput(#/s)",
+            "value": 2445,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: forward) - Time(wallclock)",
+            "value": 409087,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: regular) - Memory(residentpeak)",
+            "value": 36610048,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: regular) - Throughput(#/s)",
+            "value": 167167,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: regular) - Time(wallclock)",
+            "value": 5987,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: reverse) - Memory(residentpeak)",
+            "value": 34717696,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: reverse) - Throughput(#/s)",
+            "value": 2571,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen composed operations looped (pass: reverse) - Time(wallclock)",
+            "value": 389119,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: forward) - Malloc(total)",
+            "value": 54,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: forward) - Memory(residentpeak)",
+            "value": 35467264,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: forward) - Throughput(#/s)",
+            "value": 171775,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: forward) - Time(wallclock)",
+            "value": 5827,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: reverse) - Memory(residentpeak)",
+            "value": 36605952,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: reverse) - Throughput(#/s)",
+            "value": 1736703,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation (pass: reverse) - Time(wallclock)",
+            "value": 576,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: forward) - Malloc(total)",
+            "value": 281,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: forward) - Memory(residentpeak)",
+            "value": 36618240,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: forward) - Throughput(#/s)",
+            "value": 39583,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: forward) - Time(wallclock)",
+            "value": 25295,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: regular) - Memory(residentpeak)",
+            "value": 36605952,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: regular) - Throughput(#/s)",
+            "value": 1202175,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: regular) - Time(wallclock)",
+            "value": 832,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: reverse) - Memory(residentpeak)",
+            "value": 36618240,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: reverse) - Throughput(#/s)",
+            "value": 52703,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operation looped (small) (pass: reverse) - Time(wallclock)",
+            "value": 18991,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations (pass: regular) - Memory(residentpeak)",
+            "value": 36601856,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations (pass: regular) - Throughput(#/s)",
+            "value": 1839103,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations (pass: regular) - Time(wallclock)",
+            "value": 544,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: forward) - Malloc(total)",
+            "value": 3236,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: forward) - Memory(residentpeak)",
+            "value": 40873984,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: forward) - Throughput(#/s)",
+            "value": 3607,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: forward) - Time(wallclock)",
+            "value": 277503,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: regular) - Memory(residentpeak)",
+            "value": 36605952,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: regular) - Throughput(#/s)",
+            "value": 166271,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: regular) - Time(wallclock)",
+            "value": 6019,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: reverse) - Memory(residentpeak)",
+            "value": 36716544,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: reverse) - Throughput(#/s)",
+            "value": 4057,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - sixteen operations looped (pass: reverse) - Time(wallclock)",
+            "value": 246655,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: forward) - Malloc(total)",
+            "value": 28,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: forward) - Memory(residentpeak)",
+            "value": 36597760,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: forward) - Throughput(#/s)",
+            "value": 363519,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: forward) - Time(wallclock)",
+            "value": 2753,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: reverse) - Memory(residentpeak)",
+            "value": 37126144,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: reverse) - Throughput(#/s)",
+            "value": 1953791,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operation (pass: reverse) - Time(wallclock)",
+            "value": 512,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations (pass: regular) - Memory(residentpeak)",
+            "value": 36589568,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations (pass: regular) - Throughput(#/s)",
+            "value": 1645567,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations (pass: regular) - Time(wallclock)",
+            "value": 608,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: forward) - Malloc(total)",
+            "value": 729,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: forward) - Memory(residentpeak)",
+            "value": 34533376,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: forward) - Throughput(#/s)",
+            "value": 14479,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: forward) - Time(wallclock)",
+            "value": 69119,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: regular) - Memory(residentpeak)",
+            "value": 37126144,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: regular) - Throughput(#/s)",
+            "value": 919551,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: regular) - Time(wallclock)",
+            "value": 1088,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: reverse) - Memory(residentpeak)",
+            "value": 36286464,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: reverse) - Throughput(#/s)",
+            "value": 18783,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two composed operations looped (pass: reverse) - Time(wallclock)",
+            "value": 53279,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: forward) - Malloc(total)",
+            "value": 430,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: forward) - Memory(residentpeak)",
+            "value": 36626432,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: forward) - Throughput(#/s)",
+            "value": 20911,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: forward) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: forward) - Time(wallclock)",
+            "value": 47871,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: regular) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: regular) - Memory(residentpeak)",
+            "value": 36597760,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: regular) - Throughput(#/s)",
+            "value": 947199,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: regular) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: regular) - Time(wallclock)",
+            "value": 1056,
+            "unit": "ns"
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: reverse) - Malloc(total)",
+            "value": 16,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: reverse) - Memory(residentpeak)",
+            "value": 34111488,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: reverse) - Throughput(#/s)",
+            "value": 34399,
+            "unit": ""
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: reverse) - Time(totalCPU)",
+            "value": 0,
+            "unit": "μs"
+          },
+          {
+            "name": "LanguageCoverage - two operations looped (pass: reverse) - Time(wallclock)",
+            "value": 29103,
+            "unit": "μs"
+          },
+          {
+            "name": "ShallowWaterPDE - ShallowWaterPDE - Malloc(total)",
+            "value": 18367811,
+            "unit": ""
+          },
+          {
+            "name": "ShallowWaterPDE - ShallowWaterPDE - Time(wallclock)",
+            "value": 28990826704,
             "unit": "s"
           }
         ]
