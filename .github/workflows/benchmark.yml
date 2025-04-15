@@ -1,5 +1,6 @@
 name: Differentiation Benchmarks
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -11,7 +12,9 @@ permissions:
 jobs:
   benchmark:
     name: Run Differentiation benchmarks
-    runs-on: ubuntu-latest
+    runs-on:
+      group: Benchmark Runners
+      labels: [self-hosted, Linux, ARM64, benchmark-runner]
     strategy:
       matrix:
         swift: ["6.0.3"]
