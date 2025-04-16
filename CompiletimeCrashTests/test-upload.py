@@ -11,7 +11,7 @@ def run_cmd(cmd: [str]) -> str:
     err = result.returncode
     if err:
         raise EnvironmentError(f'Command {' '.join(cmd)} failed with error code {retcode}')
-    return result.stdout.decode()
+    return result.stdout.decode().rstrip()
 
 def get_env(variable: str, description: str) -> str:
     result = env.get(variable)
