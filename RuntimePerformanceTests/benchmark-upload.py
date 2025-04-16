@@ -36,6 +36,8 @@ github_ref = env.get('GITHUB_REF')
 commit_sha = env.get('GITHUB_SHA')
 bucket_name = env.get('INFLUX_BUCKET_NAME')
 
+swift_version = env.get('SWIFT_VERSION')
+
 benchmark_dir = "benchmark-raw-output"
 for benchmark in os.listdir(benchmark_dir):
     with open(f"{benchmark_dir}/{benchmark}") as csvfile:
@@ -55,6 +57,7 @@ for benchmark in os.listdir(benchmark_dir):
             point.tag('metric', row[label_indices['metric']])
             point.tag('unit', row[label_indices['unit']])
             point.tag('test', row[label_indices['test']])
+            point.tag('swiftVersion', swift_version)
             # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables#default-environment-variables
             point.tag('ref', github_ref)
             point.tag('commit', commit_sha)
