@@ -1,0 +1,3 @@
+# ERROR
+error: non-nominal type 'S.TangentVector' cannot be extended
+error: global function 'f' requires that 'S.TangentVector' conform to 'P'
