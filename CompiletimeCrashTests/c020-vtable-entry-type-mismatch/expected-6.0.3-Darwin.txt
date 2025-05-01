@@ -1,0 +1,24 @@
+# CRASH
+error: compile command failed due to signal 6 (use -v to see invocation)
+SIL verification failed: vtable entry for #Super.f!jvp.S must be ABI-compatible
+  ABI incompatible return values
+  @convention(method) (@guaranteed Sub) -> (Float, @owned @callee_guaranteed (Super.TangentVector) -> Float)
+  @convention(method) (@guaranteed Super) -> (Float, @owned @callee_guaranteed (@guaranteed Super.TangentVector) -> Float)
+In function:
+// $s4main3SubC1fSfyFAA5SuperCADSfyFTV_jvp
+sil private [thunk] [ossa] @$s4main3SubC1fSfyFAA5SuperCADSfyFTV_jvp : $@convention(method) (@guaranteed Sub) -> (Float, @owned @callee_guaranteed (Super.TangentVector) -> Float) {
+// %0                                             // user: %2
+bb0(%0 : @guaranteed $Sub):
+  // function_ref vtable thunk for forward-mode derivative of Sub.f()
+  %1 = function_ref @$s4main3SubC1fSfyFTJVfSpSr : $@convention(method) (@guaranteed Sub) -> (Float, @owned @callee_guaranteed (@guaranteed Super.TangentVector) -> Float) // user: %2
+  %2 = apply %1(%0) : $@convention(method) (@guaranteed Sub) -> (Float, @owned @callee_guaranteed (@guaranteed Super.TangentVector) -> Float) // user: %3
+  (%3, %4) = destructure_tuple %2 : $(Float, @callee_guaranteed (@guaranteed Super.TangentVector) -> Float) // users: %7, %6
+  // function_ref thunk for @escaping @callee_guaranteed (@guaranteed Super.TangentVector) -> (@unowned Float)
+  %5 = function_ref @$s4main5SuperC13TangentVectorVSfIeggd_AESfIegyd_TR : $@convention(thin) (Super.TangentVector, @guaranteed @callee_guaranteed (@guaranteed Super.TangentVector) -> Float) -> Float // user: %6
+  %6 = partial_apply [callee_guaranteed] %5(%4) : $@convention(thin) (Super.TangentVector, @guaranteed @callee_guaranteed (@guaranteed Super.TangentVector) -> Float) -> Float // user: %7
+  %7 = tuple (%3 : $Float, %6 : $@callee_guaranteed (Super.TangentVector) -> Float) // user: %8
+  return %7 : $(Float, @callee_guaranteed (Super.TangentVector) -> Float) // id: %8
+} // end sil function '$s4main3SubC1fSfyFAA5SuperCADSfyFTV_jvp'
+
+Please submit a bug report (https://swift.org/contributing/#reporting-bugs) and include the crash backtrace.
+Stack dump:

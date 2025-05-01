@@ -1,0 +1,2 @@
+# ERROR
+error: non-nominal type 'TestCase.TangentVector' cannot be extended

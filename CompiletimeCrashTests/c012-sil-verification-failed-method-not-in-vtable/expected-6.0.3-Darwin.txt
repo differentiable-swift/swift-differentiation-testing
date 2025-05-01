@@ -1,0 +1,16 @@
+# CRASH
+error: compile command failed due to signal 6 (use -v to see invocation)
+Assertion failed: (isa<To>(Val) && "cast<Ty>() argument of incompatible type!"), function cast, file Casting.h, line 578.
+Please submit a bug report (https://swift.org/contributing/#reporting-bugs) and include the crash backtrace.
+Stack dump:
+Apple Swift version 6.0.3 (swift-6.0.3-RELEASE)
+Compiling with effective version 5.10
+While evaluating request ExecuteSILPipelineRequest(Run pipelines { Mandatory Diagnostic Passes + Enabling Optimization Passes } on SIL for main)
+While running pass #299 SILModuleTransform "Differentiation".
+While processing // differentiability witness for abs<A>(_:)
+sil_differentiability_witness [serialized] [reverse] [parameters 0] [results 0] <T where T : DifferentiableTensorView, T.Element : Numeric> @$s4main3absyxxAA24DifferentiableTensorViewRzSj7ElementAA0dE0PRpzlF : $@convention(thin) <T where T : DifferentiableTensorView, T.Element : Numeric> (@in_guaranteed T) -> @out T {
+}
+
+ on SIL function "@$s4main3absyxxAA24DifferentiableTensorViewRzSj7ElementAA0dE0PRpzlF".
+ for 'abs(_:)' (at main.swift:26:8)
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
