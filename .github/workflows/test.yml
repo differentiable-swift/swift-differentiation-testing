@@ -43,6 +43,51 @@ jobs:
           SWIFT_VERSION: ${{ matrix.swift }}
         run: cd CompiletimeCrashTests && python test-upload.py
 
+  compiletime-crash-tests-macos:
+    name: Compiletime Crash Tests Swift ${{ matrix.swift }} on macOS
+    runs-on: macos-15
+    strategy:
+      matrix:
+        swift: ["6.0.3"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify Python version
+        run: python --version
+      - name: Install dependencies
+        run: |
+          python -m pip install "pandas~=2.2" "influxdb_client~=1.48"
+      - name: Verify package installation
+        run: python -c "import pandas as pd; print(pd.__version__); import influxdb_client; print(influxdb_client.__version__)"
+      - name: Install swiftly
+        run: |
+          curl -O https://download.swift.org/swiftly/darwin/swiftly.pkg && \
+            installer -pkg swiftly.pkg -target CurrentUserHomeDirectory && \
+            ~/.swiftly/bin/swiftly init --quiet-shell-followup && \
+            . ~/.swiftly/env.sh && \
+            hash -r
+          echo "${HOME}/.swiftly/bin" >> $GITHUB_PATH
+      - name: Install Swift ${{ matrix.swift }}
+        run: swiftly install --use ${{ matrix.swift }}
+      - name: Check Swift Installation
+        run: swift --version
+      - name: Run compiletime crash tests
+        env:
+          SWIFT_VERSION: ${{ matrix.swift }}
+        run: cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh
+      - name: Upload to Influx
+        if: ${{ github.event_name == 'push' }}
+        env:
+          INFLUX_BUCKET_NAME: ${{ secrets.InfluxBucketName }}
+          INFLUX_UPLOAD_TOKEN: ${{ secrets.InfluxUploadToken }}
+          INFLUX_ORG_NAME: ${{ secrets.InfluxOrgName }}
+          INFLUX_URL: ${{ secrets.InfluxURL }}
+          SWIFT_VERSION: ${{ matrix.swift }}
+        run: cd CompiletimeCrashTests && python test-upload.py
+
   runtime-crash-tests:
     name: Runtime Crash Tests Swift ${{ matrix.swift }}
     runs-on: ubuntu-latest
