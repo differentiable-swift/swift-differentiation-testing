@@ -41,7 +41,7 @@ for folder in $(find . -type d -mindepth 1 -maxdepth 1 | sed 's|^\./||'); do
     echo "Building and checking output of $folder"
     source ./build.sh # is expected to set RETURN_CODE variable
     echo "Finished building $folder"
-    reproducer_type=$(get_reproducer_type "expected-6.0.3.txt")
+    reproducer_type=$(get_reproducer_type "expected-${SWIFT_VERSION}-`uname -s`.txt")
     cd - > /dev/null # navigate back to previous folder
     test_results[$folder]=$reproducer_type
     # script expected to succeed
