@@ -1,0 +1,18 @@
+# CRASH
+error: compile command failed due to signal 6 (use -v to see invocation)
+Assertion failed: (srcAddr->getType() == destAddr->getType()), function createCopyAddr, file SILBuilder.h, line 1199.
+Please submit a bug report (https://swift.org/contributing/#reporting-bugs) and include the crash backtrace.
+Stack dump:
+Apple Swift version 6.1 (swift-6.1-RELEASE)
+Compiling with effective version 5.10
+While evaluating request ExecuteSILPipelineRequest(Run pipelines { Mandatory Diagnostic Passes + Enabling Optimization Passes } on SIL for main)
+While running pass #257 SILModuleTransform "Differentiation".
+While processing // differentiability witness for f<A>(_:)
+sil_differentiability_witness hidden [reverse] [parameters 0] [results 0] <T where T == D> @$s4main1fyxxAA1PRzlF : $@convention(thin) <T where T : P> (@in_guaranteed T) -> @out T {
+}
+
+ on SIL function "@$s4main1fyxxAA1PRzlF".
+ for 'f(_:)' (at main.swift:11:3)
+While generating VJP for SIL function "@$s4main1fyxxAA1PRzlF".
+ for 'f(_:)' (at main.swift:11:3)
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
