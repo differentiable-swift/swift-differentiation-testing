@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        swift: ["6.0.3"]
+        swift: ["6.0.3", "6.1.0"]
     container: swift:${{ matrix.swift }}
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
     runs-on: macos-15
     strategy:
       matrix:
-        swift: ["6.0.3"]
+        swift: ["6.0.3", "6.1.0"]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
