@@ -29,7 +29,10 @@ jobs:
           python -m pip install "pandas~=2.2" "influxdb_client~=1.48"
       - name: Verify package installation
         run: python -c "import pandas as pd; print(pd.__version__); import influxdb_client; print(influxdb_client.__version__)"
-      - run: (cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh)
+      - name: Run compiletime crash tests
+        env:
+          SWIFT_VERSION: ${{ matrix.swift }}
+        run: (cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh)
       - name: Upload to Influx
         if: ${{ github.event_name == 'push' }}
         env:
