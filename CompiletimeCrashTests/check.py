@@ -46,10 +46,10 @@ def get_env(variable: str, description: str) -> str:
 
 
 def available_ground_truth_versions(kernel_name: str) -> [str]:
-    ground_truths = [
+    ground_truths = sorted([
         f for f in ls()
         if f.startswith("expected") and f.endswith(f"{kernel_name}.txt")
-    ]
+    ])
     return [f[len("expected")+1:(len(f) - len(f"{kernel_name}.txt"))-1] for f in ground_truths]
 
 
