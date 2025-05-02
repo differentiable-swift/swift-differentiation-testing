@@ -6,7 +6,7 @@ import _Differentiation
 public protocol TensorView {
     associatedtype Element
 }
-public protocol DifferentiableTensorView: TensorView & Differentiable where Self == TangentVector {}
+public protocol DifferentiableTensorView: AdditiveArithmetic & TensorView & Differentiable where Self == TangentVector {}
 
 public protocol PlatformAPI {
     @differentiable(reverse)
