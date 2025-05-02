@@ -1,0 +1,11 @@
+# CRASH
+error: compile command failed due to signal 6 (use -v to see invocation)
+SIL verification failed: internal/private function cannot be serialized or serializable: !F->isAnySerialized() || embedded
+Please submit a bug report (https://swift.org/contributing/#reporting-bugs) and include the crash backtrace.
+Stack dump:
+Apple Swift version 6.1 (swift-6.1-RELEASE)
+Compiling with effective version 5.10
+While evaluating request ASTLoweringRequest(Lowering AST to SIL for file "main.swift")
+While verifying SIL function "@$ss4SIMDPsSF6ScalarRpzrlE3sumADyFsAARz16_Differentiation14DifferentiableRz13TangentVectorAfGPQzRszSBACs11SIMDStoragePRpzAfgMRQSBAcL_AhIRPzlTJrSpSr".
+ for '_vjpSum()' (at main.swift:15:12)
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
