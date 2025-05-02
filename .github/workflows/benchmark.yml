@@ -17,8 +17,8 @@ jobs:
       labels: [self-hosted, Linux, ARM64, benchmark-runner]
     strategy:
       matrix:
-        swift: ["6.0.3", "6.1.0", "nightly-main"]
-    container: ${{ matrix.swift == 'nightly-main' && 'swiftlang/swift:nightly-main' || format('swift:{0}', matrix.swift) }}
+        swift: ["6.0.3", "6.1.0", "nightly-main", "nightly-6.2-noble"]
+    container: ${{ contains(matrix.swift, 'nightly') && format('swiftlang/swift:{0}', matrix.swift) || format('swift:{0}', matrix.swift) }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
