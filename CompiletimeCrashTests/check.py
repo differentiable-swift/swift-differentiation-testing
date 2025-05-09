@@ -8,7 +8,8 @@ from sys import argv, stdin, stderr
 from enum import Enum
 from os import environ as env
 from os import listdir as ls
-from typing import Self
+from result import Ok, Err, Result, is_ok, is_err
+from typing import Self, TypeVar, Generic
 
 HEADER_REGEX = r"^#\s*(OK|ERROR|CRASH|XERROR)\b"
 
@@ -24,6 +25,21 @@ class ReproducerType(Enum):
         if match:
             return ReproducerType[match.group(1)]
         return None
+
+
+class CheckError(Exception):
+    pass
+
+class MissingHeader(CheckError):
+    def __init__(self):
+        super().__init__(f"Expected a reproducer type header of the form {HEADER_REGEX}.")
+
+class TestFailure(CheckError):
+    def __init__(self, found: str, expected: [str]):
+        message = f"FAIL: \"{expected_line} not found in \"{"".join(found)}\"\""
+        super().__init__(message)
+        self.missing_line = expected
+        self.found = found
 
 
 def errprint(*args, **kwargs):
@@ -62,18 +78,17 @@ def greatest_lower_bound(needle: str, haystack: [str]) -> str:
     return haystack[idx]
 
 
-def check(expected: [str], found: [str]) -> ReproducerType:
+def maybe_crash(compiler_output: list[str]) -> bool:
+    return next(filter(lambda line: "Stack dump" in line, compiler_output), None) is not None
+
+
+def check(expected: list[str], found: list[str]) -> Result[ReproducerType, CheckError]:
     reproducer_type = ReproducerType.parse(expected[0])
     match reproducer_type:
         case None:
-            raise ValueError(f"Expected a reproducer type header of the form {HEADER_REGEX}.")
+            return Err(f"Expected a reproducer type header of the form {HEADER_REGEX}.")
         case ReproducerType.OK as ok:
-            if found:
-                raise ValueError(f"Reproducer type is {ok}, but compiler produced this output: {"".join(found)}")
-            elif len(expected) > 1:
-                raise ValueError(f"Reproducer type is {ok}, i.e. compiler should not output anything, but there is some output specified in the ground truth file: {"".join(expected[1:])}")
-            elif not found:
-                return ok
+            return Ok(ok)
     expected = expected[1:]
     idx = 0
     expected_line = expected[idx]
@@ -81,12 +96,11 @@ def check(expected: [str], found: [str]) -> ReproducerType:
         if expected_line.rstrip() in line.rstrip():
             idx += 1
             if idx == len(expected):
-                return reproducer_type
+                return Ok(reproducer_type)
             expected_line = expected[idx]
         if idx == len(expected):
-            return reproducer_type
-    errprint(f"FAIL: \"{expected_line} not found in \"{"".join(found)}\"\"")
-    exit(2)
+            return Ok(reproducer_type)
+    return Err(TestFailure(expected_line, found))
 
 
 def main():
@@ -101,8 +115,19 @@ def main():
     with open(ground_truth_filename) as file:
         while line := file.readline():
             expected_output.append(line.rstrip())
-    
-    print(check(expected_output, compiler_output))
+
+    match check(expected_output, compiler_output)):
+        case Ok(reproducer_type):
+            print(reproducer_type)
+            exit(0)
+        case Err(err):
+            match err:
+                case TestFailure(found, expected):
+                    # TODO: handle nightlies here
+                    raise err
+                case _:
+                    raise err
+
 
 
 if __name__ == '__main__':
