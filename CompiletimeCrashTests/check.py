@@ -169,7 +169,7 @@ def main():
     expected_output = expected_output[1:]
     match result := check(expected_output, compiler_output):
         case None:
-            print(reproducer_type)
+            print(str(reproducer_type).split('.')[-1])
             exit(0)
         case TestFailure(found_line, expected) as err:
             if "nightly" not in swift_version:
@@ -180,7 +180,7 @@ def main():
         case _ as result:
             assert False, f"Unreachable: {result}"
 
-    print(check_weak_nightly(compiler_output))
+    print(str(check_weak_nightly(compiler_output)).split('.')[-1])
 
 
 if __name__ == '__main__':
