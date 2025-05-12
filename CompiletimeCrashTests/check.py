@@ -138,6 +138,17 @@ def check(expected: list[str], found: list[str]) -> Optional[TestFailure]:
     return TestFailure(expected_line, found)
 
 
+@typechecked
+def check_weak_nightly(found: list[str]) -> ReproducerType:
+    if not found:
+        return ReproducerType.OK
+    if maybe_crash(found):
+        return ReproducerType.CRASH
+    if maybe_error(found):
+        return ReproducerType.ERROR
+    return ReproducerType.OK 
+
+
 def main():
     swift_version = get_env("SWIFT_VERSION", "Swift version")
     kernel_name = run_cmd(['uname', '-s'])
@@ -151,18 +162,25 @@ def main():
         while line := file.readline():
             expected_output.append(line.rstrip())
 
-    match check(expected_output, compiler_output)):
-        case Ok(reproducer_type):
+    reproducer_type = ReproducerType.parse(expected_output[0])
+    if reproducer_type is None:
+        raise MissingHeader(f"Expected a reproducer type header of the form {HEADER_REGEX}.")
+
+    expected_output = expected_output[1:]
+    match result := check(expected_output, compiler_output):
+        case None:
             print(reproducer_type)
             exit(0)
+        case TestFailure(found_line, expected) as err:
+            if "nightly" not in swift_version:
+                raise err
+            # nightly to be handled next
         case Err(err):
-            match err:
-                case TestFailure(found, expected):
-                    # TODO: handle nightlies here
-                    raise err
-                case _:
-                    raise err
+            raise err
+        case _ as result:
+            assert False, f"Unreachable: {result}"
 
+    print(check_weak_nightly(compiler_output))
 
 
 if __name__ == '__main__':
