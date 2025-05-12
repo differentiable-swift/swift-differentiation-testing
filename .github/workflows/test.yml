@@ -11,11 +11,11 @@ on:
 jobs:
   compiletime-crash-tests:
     name: Compiletime Crash Tests Swift ${{ matrix.swift }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         swift: ["6.0.3", "6.1.0", "nightly-main"]
-    container: swift:${{ matrix.swift }}
+    container: ${{ contains(matrix.swift, 'nightly') && format('swiftlang/swift:{0}', matrix.swift) || format('swift:{0}', matrix.swift) }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -59,7 +59,7 @@ jobs:
         run: python --version
       - name: Install dependencies
         run: |
-          python -m pip install "pandas~=2.2" "influxdb_client~=1.48"
+          python -m pip install "pandas~=2.2" "influxdb_client~=1.48" "result~=0.17" "typeguard~=4.4"
       - name: Verify package installation
         run: python -c "import pandas as pd; print(pd.__version__); import influxdb_client; print(influxdb_client.__version__)"
       - name: Install swiftly
