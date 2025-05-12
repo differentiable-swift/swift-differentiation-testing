@@ -38,7 +38,7 @@ class MissingHeader(CheckError):
 class TestFailure(CheckError):
     __match_args__ = ("found_line", "expected")
     def __init__(self, found_line: str, expected: [str]):
-        message = f"FAIL: \"{found_line} not found in \"{"".join(expected)}\"\""
+        message = f"FAIL: `{found_line}` not found in `{"".join(expected)}`"
         super().__init__(message)
         self.found_line = found_line
         self.expected = expected
