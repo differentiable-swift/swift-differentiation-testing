@@ -9,7 +9,8 @@ from enum import Enum
 from os import environ as env
 from os import listdir as ls
 from result import Ok, Err, Result, is_ok, is_err
-from typing import Self, TypeVar, Generic
+from typing import Self, TypeVar, Generic, Optional
+from typeguard import typechecked
 
 HEADER_REGEX = r"^#\s*(OK|ERROR|CRASH|XERROR)\b"
 
@@ -46,7 +47,8 @@ def errprint(*args, **kwargs):
     print(*args, **kwargs, file=stderr)
 
 
-def run_cmd(cmd: [str]) -> str:
+@typechecked
+def run_cmd(cmd: list[str]) -> str:
     result = subprocess.run(cmd, capture_output=True)
     err = result.returncode
     if err:
@@ -54,6 +56,7 @@ def run_cmd(cmd: [str]) -> str:
     return result.stdout.decode().rstrip()
 
 
+@typechecked
 def get_env(variable: str, description: str) -> str:
     result = env.get(variable)
     if not result:
@@ -61,7 +64,8 @@ def get_env(variable: str, description: str) -> str:
     return result
 
 
-def available_ground_truth_versions(kernel_name: str) -> [str]:
+@typechecked
+def available_ground_truth_versions(kernel_name: str) -> list[str]:
     ground_truths = sorted([
         f for f in ls()
         if f.startswith("expected") and f.endswith(f"{kernel_name}.txt")
@@ -69,16 +73,22 @@ def available_ground_truth_versions(kernel_name: str) -> [str]:
     return [f[len("expected")+1:(len(f) - len(f"{kernel_name}.txt"))-1] for f in ground_truths]
 
 
-def greatest_lower_bound(needle: str, haystack: [str]) -> str:
+@typechecked
+def greatest_lower_bound(needle: str, haystack: list[str]) -> str:
     if not haystack:
         raise ValueError("`haystack` cannot be empty")
     idx = bisect_left(haystack, needle)
-    if idx == len(haystack) or haystack[idx] > needle:
-        return haystack[idx-1]
-    return haystack[idx]
+    retval = haystack[idx-1] if (idx == len(haystack) or haystack[idx] > needle) else haystack[idx]
+    if retval > needle:
+        raise ValueError(f"No effective ground truth available for {needle}: earliest available version is {retval}")
+    return retval
 
 
+@typechecked
 def maybe_crash(compiler_output: list[str]) -> bool:
+    """Could the compiler output denote a crash?
+    We expect "Stack dump" to be in the output of a crash.
+    """
     return next(filter(lambda line: "Stack dump" in line, compiler_output), None) is not None
 
 
