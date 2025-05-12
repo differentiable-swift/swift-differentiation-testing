@@ -112,25 +112,29 @@ def maybe_crash(compiler_output: list[str]) -> bool:
     return next(filter(lambda line: "Stack dump" in line, compiler_output), None) is not None
 
 
-def check(expected: list[str], found: list[str]) -> Result[ReproducerType, CheckError]:
-    reproducer_type = ReproducerType.parse(expected[0])
-    match reproducer_type:
-        case None:
-            return Err(f"Expected a reproducer type header of the form {HEADER_REGEX}.")
-        case ReproducerType.OK as ok:
-            return Ok(ok)
-    expected = expected[1:]
+@typechecked
+def maybe_error(compiler_output: list[str]) -> bool:
+    """Could the compiler output be an error?
+    We expect "error:" to be in the output of an error.
+    """
+    return next(filter(lambda line: "error:" in line, compiler_output), None) is not None
+
+
+@typechecked
+def check(expected: list[str], found: list[str]) -> Optional[TestFailure]:
+    if not expected and not found:
+        return
     idx = 0
     expected_line = expected[idx]
     for line in found:
         if expected_line.rstrip() in line.rstrip():
             idx += 1
             if idx == len(expected):
-                return Ok(reproducer_type)
+                return
             expected_line = expected[idx]
         if idx == len(expected):
-            return Ok(reproducer_type)
-    return Err(TestFailure(expected_line, found))
+            return
+    return TestFailure(expected_line, found)
 
 
 def main():
