@@ -36,11 +36,12 @@ class MissingHeader(CheckError):
         super().__init__(f"Expected a reproducer type header of the form {HEADER_REGEX}.")
 
 class TestFailure(CheckError):
-    def __init__(self, found: str, expected: [str]):
-        message = f"FAIL: \"{expected_line} not found in \"{"".join(found)}\"\""
+    __match_args__ = ("found_line", "expected")
+    def __init__(self, found_line: str, expected: [str]):
+        message = f"FAIL: \"{found_line} not found in \"{"".join(expected)}\"\""
         super().__init__(message)
-        self.missing_line = expected
-        self.found = found
+        self.found_line = found_line
+        self.expected = expected
 
 
 def errprint(*args, **kwargs):
