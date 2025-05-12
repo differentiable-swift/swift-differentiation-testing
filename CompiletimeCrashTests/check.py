@@ -85,6 +85,26 @@ def greatest_lower_bound(needle: str, haystack: list[str]) -> str:
 
 
 @typechecked
+def effective_swift_version(swift_version: str, available_versions: list[str]) -> str:
+    """Swift version whose ground truth is to be used.
+    If `swift_version` is a release version (e.g. "6.0.3", "6.1.0" etc), and an exact match is not found in `available_versions`,
+    then the latest prior release is used.
+
+    >>> effective_swift_version("6.1.2", ["6.0.3", "6.1.0"])
+    "6.1.0"
+
+    If `swift_version` is a nightly (e.g. "nightly-main", "nightly-6.2-noble" etc), then the latest available release version is used.
+
+    >>> effective_swift_version("nightly-6.2-noble", ["6.0.3", "6.1.0"])
+    "6.1.0"
+    """
+    release_versions = [v for v in available_versions if "nightly" not in v]
+    if "nightly" in swift_version:
+        return sorted(release_versions)[-1]
+    return greatest_lower_bound(swift_version, available_versions)
+
+
+@typechecked
 def maybe_crash(compiler_output: list[str]) -> bool:
     """Could the compiler output denote a crash?
     We expect "Stack dump" to be in the output of a crash.
@@ -117,10 +137,10 @@ def main():
     swift_version = get_env("SWIFT_VERSION", "Swift version")
     kernel_name = run_cmd(['uname', '-s'])
     available_versions = available_ground_truth_versions(kernel_name)
-    ground_truth_version = greatest_lower_bound(swift_version, available_versions)
-    compiler_output = stdin.readlines()
+    ground_truth_version = effective_swift_version(swift_version, available_versions)
     # read ground truth file into list of lines
     ground_truth_filename = f"expected-{ground_truth_version}-{kernel_name}.txt"
+    compiler_output = stdin.readlines()
     expected_output = []
     with open(ground_truth_filename) as file:
         while line := file.readline():
