@@ -21,7 +21,7 @@ class ReproducerType(Enum):
     ERROR = 3   # should build successfully, but throws compilation error
 
     @staticmethod
-    def parse(header: str) -> type[Self | None]:
+    def parse(header: str) -> Optional[Self]:
         match = re.match(HEADER_REGEX, header)
         if match:
             return ReproducerType[match.group(1)]
