@@ -50,6 +50,7 @@ github_ref = env.get('GITHUB_REF')
 commit_sha = env.get('GITHUB_SHA')
 bucket_name = env.get('INFLUX_BUCKET_NAME')
 
+
 for test, result in results.items():
     point = influxdb_client.Point('compiletime-crash-tests')
     point.tag('processorType', processor_type)
@@ -65,3 +66,25 @@ for test, result in results.items():
         print(f"DRY RUN: {point}")
         continue
     write_api.write(bucket=bucket_name, record=point)
+
+summary = { "CRASH": 0, "ERROR": 0, "XERROR": 0, "OK": 0 }
+for result in results.values():
+    summary[result] += 1
+
+point = influxdb_client.Point('compiletime-crash-tests-summary')
+point.tag('processorType', processor_type)
+point.tag('kernelVersion', f"{kernel_version}")
+point.tag('kernelName', f"{kernel_name}")
+point.tag('testclass', "crash_tests_summary")
+point.tag('ref', github_ref)
+point.tag('commit', commit_sha)
+point.tag('swiftVersion', swift_version)
+
+for status, count in summary.items():
+    point.field(f"{status}_count", count)
+
+if not in_ci:
+    print(f"DRY RUN: {point}")
+else:
+    write_api.write(bucket=bucket_name, record=point)
+
