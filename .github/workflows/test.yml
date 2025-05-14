@@ -4,6 +4,8 @@ name: tests
 on:
   workflow_dispatch:
   pull_request:
+  schedule:
+    - cron: '0 0 * * *' # Every day at midnight UTC
   push:
     branches:
      - main
@@ -34,7 +36,7 @@ jobs:
           SWIFT_VERSION: ${{ matrix.swift }}
         run: (cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh)
       - name: Upload to Influx
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' || github.event.name == 'schedule' }}
         env:
           INFLUX_BUCKET_NAME: ${{ secrets.InfluxBucketName }}
           INFLUX_UPLOAD_TOKEN: ${{ secrets.InfluxUploadToken }}
