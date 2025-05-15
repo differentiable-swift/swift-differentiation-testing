@@ -178,7 +178,7 @@ def main():
             print(str(reproducer_type).split('.')[-1])
             exit(0)
         case TestFailure(found_line, expected) as err:
-            if "nightly" not in swift_version:
+            if "nightly" not in swift_version and "snapshot" not in swift_version:
                 raise err
             # nightly to be handled next
         case Err(err):
