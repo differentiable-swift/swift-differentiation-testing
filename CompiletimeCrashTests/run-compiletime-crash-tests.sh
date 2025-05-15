@@ -48,6 +48,7 @@ for i in "${!test_keys[@]}"; do
 done
 json+="}"
 
+echo $json
 echo $json > compiletime-crash-test-results.json
 
 echo "Finished running all Compiletime Crash tests"
