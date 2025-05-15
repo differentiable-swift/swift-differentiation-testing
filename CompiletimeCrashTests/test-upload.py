@@ -3,8 +3,12 @@ import json
 import subprocess
 
 from os import environ as env
+from sys import stderr
 
 import influxdb_client
+
+def errprint(*args, **kwargs):
+    print(*args, **kwargs, file=stderr)
 
 def run_cmd(cmd: [str]) -> str:
     result = subprocess.run(cmd, capture_output=True)
@@ -30,6 +34,8 @@ with open('compiletime-crash-test-results.json') as file:
 
 if not results:
     raise ValueError('No results found!')
+
+errprint(f"INFO: {results}")
 
 url = get_env('INFLUX_URL', "Influx URL")
 token = get_env('INFLUX_UPLOAD_TOKEN', "Influx upload token")
@@ -65,6 +71,7 @@ for test, result in results.items():
     if not in_ci:
         print(f"DRY RUN: {point}")
         continue
+    errprint(f"INFO: storing point {point} in {bucket_name}")
     write_api.write(bucket=bucket_name, record=point)
 
 summary = { "CRASH": 0, "ERROR": 0, "XERROR": 0, "OK": 0 }
@@ -86,5 +93,6 @@ for status, count in summary.items():
 if not in_ci:
     print(f"DRY RUN: {point}")
 else:
+    errprint(f"INFO: storing point {point} in {bucket_name}")
     write_api.write(bucket=bucket_name, record=point)
 
