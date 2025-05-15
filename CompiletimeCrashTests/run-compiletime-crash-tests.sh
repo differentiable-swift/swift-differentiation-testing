@@ -14,12 +14,12 @@ test_values=()
 
 for folder in $(find . -type d -mindepth 1 -maxdepth 1 | sed 's|^\./||'); do
     let total_count+=1
-    cd "$folder" # navigate to current testing folder
+    cd "$folder" || exit 1 # navigate to current testing folder, avoid silent failures
     echo "Building and checking output of $folder"
     reproducer_type=`source ./build.sh`
     RETURN_CODE=$?
     echo "Finished building $folder"
-    cd - > /dev/null # navigate back to previous folder
+    cd - > /dev/null  || exit 1 # navigate back to previous folder, avoid silent failure
     # script expected to succeed
     test_keys+=("$folder")
     test_values+=("$reproducer_type")
