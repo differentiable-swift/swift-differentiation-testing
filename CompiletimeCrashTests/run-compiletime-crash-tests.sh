@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
+echo `bash --version`
+
 echo -e "Running Compiletime Crash tests\n"
 
 echo -e "Compiletime Crash tests\n"
+
 
 if [[ $OSTYPE == 'darwin'* ]]; then
         export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
