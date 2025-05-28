@@ -164,9 +164,9 @@ def main():
     ground_truth_filename = f"expected-{ground_truth_version}-{kernel_name}.txt"
     compiler_output = stdin.readlines()
     if 'nightly' in swift_version or 'snapshot' in swift_version:
-        if not compiler_output: errprint("TRACE: <no compiler output>")
-        else:
-            for i, line in enumerate(compiler_output): errprint("TRACE ", ':', line)
+        if compiler_output:
+            for i, line in enumerate(compiler_output): print("TRACE ", ':', line)
+        else: print("TRACE: <no compiler output>")
     expected_output = []
     with open(ground_truth_filename) as file:
         while line := file.readline():
