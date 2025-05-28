@@ -36,7 +36,7 @@ jobs:
           SWIFT_VERSION: ${{ matrix.swift }}
         run: (cd CompiletimeCrashTests && ./run-compiletime-crash-tests.sh)
       - name: Upload to Influx
-        if: ${{ github.event_name == 'push' || github.event.name == 'schedule' }}
+        if: ${{ github.event_name == 'push' || github.event.name == 'schedule' || github.event.name == 'workflow_dispatch' }}
         env:
           INFLUX_BUCKET_NAME: ${{ secrets.InfluxBucketName }}
           INFLUX_UPLOAD_TOKEN: ${{ secrets.InfluxUploadToken }}
