@@ -163,6 +163,8 @@ def main():
     # read ground truth file into list of lines
     ground_truth_filename = f"expected-{ground_truth_version}-{kernel_name}.txt"
     compiler_output = stdin.readlines()
+    if 'nightly' in swift_version or 'snapshot' in swift_version:
+        errprint(compiler_output)
     expected_output = []
     with open(ground_truth_filename) as file:
         while line := file.readline():
