@@ -110,19 +110,19 @@ def effective_swift_version(swift_version: str, available_versions: list[str]) -
 
 
 @typechecked
-def maybe_crash(compiler_output: list[str]) -> bool:
+def maybe_crash(compiler_output: list[str]) -> Optional[str]:
     """Could the compiler output denote a crash?
     We expect "Stack dump" to be in the output of a crash.
     """
-    return next(filter(lambda line: "Stack dump" in line, compiler_output), None) is not None
+    return next(filter(lambda line: "Stack dump" in line, compiler_output), None)
 
 
 @typechecked
-def maybe_error(compiler_output: list[str]) -> bool:
+def maybe_error(compiler_output: list[str]) -> Optional[str]:
     """Could the compiler output be an error?
     We expect "error:" to be in the output of an error.
     """
-    return next(filter(lambda line: "error:" in line, compiler_output), None) is not None
+    return next(filter(lambda line: "error:" in line, compiler_output), None)
 
 
 @typechecked
