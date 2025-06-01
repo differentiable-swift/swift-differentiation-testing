@@ -1,0 +1,2 @@
+# XERROR
+error: either both or none of derivative and original function must have @alwaysEmitIntoClient attribute
