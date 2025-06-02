@@ -7,5 +7,5 @@ Apple Swift version 6.1 (swift-6.1-RELEASE)
 Compiling with effective version 5.10
 While evaluating request ASTLoweringRequest(Lowering AST to SIL for file "main.swift")
 While verifying SIL function "@$ss4SIMDPsSF6ScalarRpzrlE3sumADyFsAARz16_Differentiation14DifferentiableRz13TangentVectorAfGPQzRszSBACs11SIMDStoragePRpzAfgMRQSBAcL_AhIRPzlTJrSpSr".
- for '_vjpSum()' (at main.swift:15:12)
+ for '_vjpSum()' (at main.swift:16:12)
 Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
