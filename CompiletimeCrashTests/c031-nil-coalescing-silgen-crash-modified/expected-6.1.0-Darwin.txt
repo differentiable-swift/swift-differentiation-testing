@@ -1,1 +1,5 @@
-# OK
+# CRASH
+error: compile command failed due to signal 6 (use -v to see invocation)
+SIL verification failed: internal/private function cannot be serialized or serializable: !F->isAnySerialized() || embedded
+Stack dump:
+for '_vjpNilCoalescing(optional:defaultValue:)' (at main.swift:9:1)
