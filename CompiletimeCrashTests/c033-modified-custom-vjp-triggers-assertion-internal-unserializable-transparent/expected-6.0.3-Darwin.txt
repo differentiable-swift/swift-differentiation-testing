@@ -1,6 +1,3 @@
 # CRASH
-error: compile command failed due to signal 6 (use -v to see invocation)
-SIL verification failed: internal/private function cannot be serialized or serializable: !F->isAnySerialized() || embedded
-In function:
-// reverse-mode derivative of SIMD<>.sum()
-Please submit a bug report (https://swift.org/contributing/#reporting-bugs) and include the crash backtrace.
+<unknown>:0: error: symbol '$ss4SIMDPsE9repeatingx6ScalarQz_tcfCsAARz16_Differentiation14DifferentiableRz13TangentVectorAfGPQzRszSBADs11SIMDStoragePRpzAfgMRQAdL_AhIQZAMRSlTJfSUpSr'
+please submit a bug report 
