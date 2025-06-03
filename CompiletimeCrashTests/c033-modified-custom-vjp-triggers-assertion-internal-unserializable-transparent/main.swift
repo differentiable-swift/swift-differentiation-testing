@@ -8,15 +8,20 @@ where
     Self: Differentiable,
     Scalar: BinaryFloatingPoint & Differentiable,
     Scalar.TangentVector: BinaryFloatingPoint,
-    TangentVector == Self
+    TangentVector == Self,
+    Scalar == Scalar.TangentVector
 {
     @inlinable
-    @derivative(of: sum)
-    @_alwaysEmitIntoClient
+    @derivative(of: Self.init(repeating:))
     @_transparent
-    public func _vjpSum() -> (
-        value: Scalar, pullback: (Scalar.TangentVector) -> TangentVector
+    @_alwaysEmitIntoClient
+    public static func _vjpRep(_ value: Scalar) -> (
+        value: Self, pullback: (Self.TangentVector) -> Scalar.TangentVector
     ) {
-        return (sum(), { v in Self(repeating: Scalar(v)) })
+        let value = Self.init(repeating: value)
+        func pullback(_: Self.TangentVector) -> Scalar.TangentVector {
+            return value.sum()
+        }
+        return (value: value, pullback: pullback)
     }
 }
