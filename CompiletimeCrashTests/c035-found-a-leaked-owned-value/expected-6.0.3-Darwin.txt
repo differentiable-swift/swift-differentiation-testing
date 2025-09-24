@@ -1,1 +1,7 @@
-# OK
+# CRASH
+Begin Error in Function: '$sSa16_DifferentiationAA14DifferentiableRzlE0B4ViewVySf_GA3EIeggooo_TJSdSpSSSrSP'
+Error! Found a leaked owned value that was never consumed.
+Value: (%3, %4, **%5**) = destructure_tuple %2 : $(Array<Float>.DifferentiableView, Array<Float>.DifferentiableView, Array<Float>.DifferentiableView)
+End Error in Function: '$sSa16_DifferentiationAA14DifferentiableRzlE0B4ViewVySf_GA3EIeggooo_TJSdSpSSSrSP'
+Found ownership error?!
+Stack dump:
