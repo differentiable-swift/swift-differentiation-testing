@@ -1,0 +1,9 @@
+# CRASH
+substitution map's generic signature: <τ_0_0, τ_0_1 where τ_0_0 : Sequence, τ_0_0 : Differentiable, τ_0_1 : Sequence, τ_0_1 : Differentiable, τ_0_0.TangentVector : Sequence, τ_0_1.TangentVector : Sequence>
+callee's generic signature: <τ_0_0, τ_0_1 where τ_0_0 : RangeReplaceableCollection, τ_0_0 : Differentiable, τ_0_1 : RangeReplaceableCollection, τ_0_1 : Differentiable, τ_0_0.Element : Differentiable, τ_0_0.TangentVector : RangeReplaceableCollection, τ_0_1.Element : Differentiable, τ_0_1.TangentVector : RangeReplaceableCollection, τ_0_0.Element.TangentVector == τ_0_0.TangentVector.Element, τ_0_1.Element.TangentVector == τ_0_1.TangentVector.Element>
+SIL verification failed: Substitution map does not match callee in apply instruction: false
+Verifying instruction:
+->   %7 = partial_apply [callee_guaranteed] %6<τ_0_0, τ_0_1>(%5) : $@convention(thin) <τ_0_0, τ_0_1 where τ_0_0 : RangeReplaceableCollection, τ_0_0 : Differentiable, τ_0_1 : RangeReplaceableCollection, τ_0_1 : Differentiable, τ_0_0.Element : Differentiable, τ_0_0.TangentVector : RangeReplaceableCollection, τ_0_1.Element : Differentiable, τ_0_1.TangentVector : RangeReplaceableCollection, τ_0_0.Element.TangentVector == τ_0_0.TangentVector.Element, τ_0_1.Element.TangentVector == τ_0_1.TangentVector.Element> (@in_guaranteed Zip2Sequence<τ_0_0, τ_0_1>.TangentVector, @guaranteed @callee_guaranteed (@in_guaranteed Zip2Sequence<τ_0_0, τ_0_1>.TangentVector) -> (@out τ_0_0.TangentVector, @out τ_0_1.TangentVector)) -> (@out τ_0_0.TangentVector, @out τ_0_1.TangentVector) // user: %8
+In function:
+// reverse-mode derivative of zip<A, B>(_:_:)
+Stack dump:
