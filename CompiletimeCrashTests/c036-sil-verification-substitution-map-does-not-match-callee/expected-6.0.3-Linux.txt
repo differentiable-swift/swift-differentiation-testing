@@ -1,0 +1,3 @@
+# CRASH
+Stack dump:
+*** Program crashed: Bad pointer dereference at 0x0000000000000000 ***
