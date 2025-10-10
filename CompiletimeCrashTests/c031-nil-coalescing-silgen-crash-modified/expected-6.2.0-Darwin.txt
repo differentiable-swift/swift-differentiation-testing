@@ -1,1 +1,3 @@
-# OK
+# CRASH
+SIL verification failed: internal/private function cannot be serialized or serializable: !F->isAnySerialized() || embedded
+Stack dump

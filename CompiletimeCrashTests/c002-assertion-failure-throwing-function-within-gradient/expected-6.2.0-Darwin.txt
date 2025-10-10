@@ -1,2 +1,0 @@
-# XERROR
-error: function is not differentiable

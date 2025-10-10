@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        swift: ["6.0.3", "6.1.0", "nightly-main", "nightly-6.2-jammy"]
+        swift: ["6.0.3", "6.1.0", "6.2", "nightly-main", ]
     container: ${{ contains(matrix.swift, 'nightly') && format('swiftlang/swift:{0}', matrix.swift) || format('swift:{0}', matrix.swift) }}
     steps:
       - uses: actions/checkout@v4
@@ -50,7 +50,7 @@ jobs:
     runs-on: macos-15
     strategy:
       matrix:
-        swift: ["6.0.3", "6.1.0", "main-snapshot", "6.2-snapshot"]
+        swift: ["6.0.3", "6.1.0", "6.2", "main-snapshot"]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
