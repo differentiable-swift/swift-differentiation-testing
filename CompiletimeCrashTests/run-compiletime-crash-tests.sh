@@ -11,6 +11,7 @@ fi
 test_keys=()
 test_values=()
 
+failed=false
 
 for folder in $(find . -type d -mindepth 1 -maxdepth 1 | sed 's|^\./||'); do
     let total_count+=1
@@ -32,9 +33,13 @@ for folder in $(find . -type d -mindepth 1 -maxdepth 1 | sed 's|^\./||'); do
     else
         # script failed unexpectedly
         echo -e "$folder: unexpected output\n"
-        exit 1
+        failed=true
     fi
 done
+
+if [ $failed = true ] ; then
+    exit 1
+fi
 
 # format JSON
 json="{"

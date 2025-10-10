@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-swiftc main.swift -o main 2>&1 | ../check.py
+swiftc -swift-version 6 main.swift -o main 2>&1 | ../check.py
