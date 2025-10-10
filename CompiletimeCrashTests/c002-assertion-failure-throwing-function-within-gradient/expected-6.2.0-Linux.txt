@@ -1,2 +1,17 @@
-# XERROR
-error: function is not differentiable
+# CRASH
+<unknown>:0: error: fatal error encountered during compilation
+<unknown>:0: note: do not know how to handle this incoming bb argument
+Stack dump
+While evaluating request ExecuteSILPipelineRequest(Run pipelines { Mandatory Diagnostic Passes + Enabling Optimization Passes } on SIL for main)
+While running pass #229 SILModuleTransform "Differentiation".
+While canonicalizing `differentiable_function` SIL node   %17 = differentiable_function [parameters 0] [results 0] %16 : $@callee_guaranteed (Double) -> Double // user: %18
+While ...in SIL function "@main".
+While processing // differentiability witness for closure #1 in 
+sil_differentiability_witness private [reverse] [parameters 0] [results 0] @$s4mainS2dcfU_ : $@convention(thin) (Double) -> Double {
+}
+on SIL function "@$s4mainS2dcfU_".
+for expression at [main.swift:19:29 - line:19:49] RangeText="{ x in try! f(x: x) "
+While generating VJP for SIL function "@$s4mainS2dcfU_".
+for expression at [main.swift:19:29 - line:19:49] RangeText="{ x in try! f(x: x) "
+While generating pullback for SIL function "@$s4mainS2dcfU_".
+for expression at [main.swift:19:29 - line:19:49] RangeText="{ x in try! f(x: x) "
