@@ -157,11 +157,13 @@ def check_weak_nightly(found: list[str]) -> ReproducerType:
 
 def main():
     swift_version = get_env("SWIFT_VERSION", "Swift version")
+    errprint(f"DEBUG: SWIFT_VERSION = {swift_version}")
     kernel_name = run_cmd(['uname', '-s'])
     available_versions = available_ground_truth_versions(kernel_name)
     ground_truth_version = effective_swift_version(swift_version, available_versions)
     # read ground truth file into list of lines
     ground_truth_filename = f"expected-{ground_truth_version}-{kernel_name}.txt"
+    errprint(f"DEBUG: {ground_truth_filename}")
     compiler_output = stdin.readlines()
     expected_output = []
     with open(ground_truth_filename) as file:
