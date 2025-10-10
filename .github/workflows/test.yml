@@ -15,6 +15,7 @@ jobs:
     name: Compiletime Crash Tests Swift ${{ matrix.swift }}
     runs-on: ubuntu-22.04
     strategy:
+      fail-fast: false
       matrix:
         swift: ["6.0.3", "6.1.0", "6.2", "nightly-main", ]
     container: ${{ contains(matrix.swift, 'nightly') && format('swiftlang/swift:{0}', matrix.swift) || format('swift:{0}', matrix.swift) }}
@@ -49,6 +50,7 @@ jobs:
     name: Compiletime Crash Tests Swift ${{ matrix.swift }} on macOS
     runs-on: macos-15
     strategy:
+      fail-fast: false
       matrix:
         swift: ["6.0.3", "6.1.0", "6.2", "main-snapshot"]
     steps:
