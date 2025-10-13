@@ -37,7 +37,7 @@ for folder in $(find . -type d -mindepth 1 -maxdepth 1 | sed 's|^\./||'); do
     fi
 done
 
-if [ "$failed" = true ] ; then
+if [ $failed = true ] ; then
     exit 1
 fi
 
