@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-swift -swift-version 6 build -v 2>&1 | ../check.py
+swift build -Xswiftc -swift-version -Xswiftc 6 -v 2>&1 | ../check.py
